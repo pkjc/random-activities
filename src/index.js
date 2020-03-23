@@ -29,12 +29,6 @@ theme.typography.h4 = {
 };
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    {/* <Router>
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/saved-activites" component={SavedActivities} />
-      </Switch>
-    </Router> */}
     <App />
   </ThemeProvider>,
 

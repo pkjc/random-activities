@@ -1,18 +1,16 @@
 {
-  "name": "b9ul4",
+  "name": "random-activities",
   "version": "0.0.102",
-  "description": "hello world starter",
-  "keywords": [
-    "react",
-    "material"
-  ],
+  "description": "",
+  "keywords": [],
   "homepage": "https://codesandbox.io/s/4j7m47vlm4",
   "main": "index.js",
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/icons": "4.9.1",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-router-dom": "5.1.2"
   },
   "devDependencies": {
     "react-scripts": "1.0.0"
