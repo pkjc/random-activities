@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     background: "#fff"
   },
   title: {
-    flex: 1
+    color: "#fff"
   },
   grid: {
     height: "100%",

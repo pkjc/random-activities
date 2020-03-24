@@ -6,7 +6,7 @@
     "react",
     "material"
   ],
-  "homepage": "https://codesandbox.io/s/4j7m47vlm4",
+  "homepage": "http://localhost:3000",
   "main": "index.js",
   "dependencies": {
     "@material-ui/core": "latest",

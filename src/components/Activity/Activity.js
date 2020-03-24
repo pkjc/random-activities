@@ -16,7 +16,7 @@ import useStyles from "../../assets/styles";
 export default function Activity() {
   const classes = useStyles();
   return (
-    <Grid container md={6} xs={10} lg={5} item>
+    <Grid container md={6} xs={11} lg={5} item>
       <Card className={classes.card}>
         <CardHeader
           classes={{ root: classes.cardHeader, avatar: classes.avatar }}

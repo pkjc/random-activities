@@ -1,18 +1,15 @@
-import React from "react";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
-import PublishIcon from "@material-ui/icons/Publish";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import useStyles from "../../assets/styles";
 import Activity from "../Activity/Activity";
-import Box from "@material-ui/core/Box";
+import data from "../../assets/data";
 
 export default function Home() {
-  const classes = useStyles();
+  const [activityId, setActivityId] = useState(0);
 
+  const selectRandomActivity = () => {};
+
+  const classes = useStyles();
   return (
     <Grid
       container

@@ -24,7 +24,7 @@ const theme = createMuiTheme({
 theme.typography.h4 = {
   fontSize: "1.5rem",
   [theme.breakpoints.up("lg")]: {
-    fontSize: "1.9em"
+    fontSize: "1.8em"
   }
 };
 ReactDOM.render(
