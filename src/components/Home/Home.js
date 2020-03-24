@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "../../assets/styles";
 import Activity from "../Activity/Activity";
-import data from "../../assets/data";
 
 export default function Home() {
   const [activityId, setActivityId] = useState(0);
