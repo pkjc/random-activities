@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -9,19 +9,6 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {"Copyright © "}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Your Website
-//       </Link>{" "}
-//       {new Date().getFullYear()}
-//       {"."}
-//     </Typography>
-//   );
-// }
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -49,29 +36,32 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-function SavedActivity() {
+function SavedActivity(props) {
   const classes = useStyles();
+
+  const savedActivity = props.savedActivity;
 
   return (
     <Card className={classes.card}>
       <CardMedia
         className={classes.cardMedia}
-        image="https://source.unsplash.com/random"
-        title="Image title"
+        image={savedActivity.image}
+        title={savedActivity.title}
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h6" component="h2">
-          Heading
+          {savedActivity.title}
         </Typography>
-        <Typography>
-          This is a media card. You can use this section to describe the
-          content.
-        </Typography>
+        <Typography>{savedActivity.description}</Typography>
       </CardContent>
       <CardActions>
-        <Button size="medium" color="primary">
+        <Button
+          size="medium"
+          color="primary"
+          onClick={() => {
+            props.removeSavedActivity(savedActivity.id);
+          }}
+        >
           Remove
         </Button>
       </CardActions>
@@ -81,16 +71,42 @@ function SavedActivity() {
 
 export default function SavedActivities() {
   const classes = useStyles();
+
+  const [savedActivities, setSavedActivities] = React.useState(
+    JSON.parse(localStorage.getItem("savedActivities")) || []
+  );
+
+  console.log(savedActivities);
+
+  useEffect(() => {
+    // remove from localStorage
+  }, [savedActivities]);
+
+  const removeSavedActivity = savedActivityId => {
+    // remove from state variable
+    setSavedActivities([]);
+  };
+  const renderSavedActivity = savedActivity => {
+    savedActivity = JSON.parse(savedActivity);
+    return (
+      <Grid item key={savedActivity.id} xs={12} sm={6} md={4}>
+        <SavedActivity
+          savedActivity={savedActivity}
+          removeSavedActivity={removeSavedActivity}
+        />
+      </Grid>
+    );
+  };
   return (
     <React.Fragment>
       <CssBaseline />
       <Container className={classes.cardGrid} maxWidth="md">
         <Grid container spacing={4}>
-          {cards.map(card => (
-            <Grid item key={card} xs={12} sm={6} md={4}>
-              <SavedActivity />
-            </Grid>
-          ))}
+          {savedActivities.length < 1
+            ? "No Saved Activities :("
+            : savedActivities.map(savedActivity =>
+                renderSavedActivity(savedActivity)
+              )}
         </Grid>
       </Container>
     </React.Fragment>

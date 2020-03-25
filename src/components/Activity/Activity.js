@@ -64,7 +64,7 @@ export default function Activity(props) {
               startIcon={<ThumbUpIcon />}
               className={classes.yayBtn}
               onClick={() => {
-                props.dopeHandler();
+                props.dopeHandler(props.activity);
               }}
             >
               Dope

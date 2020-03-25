@@ -5,11 +5,21 @@ import Activity from "../Activity/Activity";
 import data from "../../assets/data";
 
 export default function Home() {
+  // localStorage.clear();
   const [activityId, setActivityId] = useState(0);
   // const [activities, setActivities] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [alreadySelectedIds, setAlreadySelectedIds] = useState([]);
   const [counter, setCounter] = useState(0);
+
+  const [savedActivities, setSavedActivities] = React.useState(
+    JSON.parse(localStorage.getItem("savedActivities")) || []
+  );
+
+  useEffect(() => {
+    // add to localStorage
+    localStorage.setItem("savedActivities", JSON.stringify(savedActivities));
+  }, [savedActivities]);
 
   useEffect(() => {
     // 1. pull data from api
@@ -20,8 +30,6 @@ export default function Home() {
 
     // 3. Select random item from data
     selectRandomActivity();
-
-    // 4. Change loading to false
   }, []);
 
   const selectRandomActivity = () => {
@@ -44,7 +52,9 @@ export default function Home() {
     setIsLoading(false);
   };
 
-  const dopeHandler = () => {
+  const dopeHandler = savedActivity => {
+    if (!savedActivities.includes(JSON.stringify(savedActivity)))
+      setSavedActivities([...savedActivities, JSON.stringify(savedActivity)]);
     selectRandomActivity();
   };
 
