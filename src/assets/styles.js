@@ -11,9 +11,7 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: 14,
     paddingTop: 22
   },
-  cardContentPara: {
-    fontSize: 20
-  },
+  cardContentPara: {},
   media: {
     height: 0,
     paddingTop: "56.25%" // 16:9
@@ -30,7 +28,10 @@ const useStyles = makeStyles(theme => ({
   cardContentTitle: {
     fontWeight: 700
   },
-  cardHeader: { paddingLeft: 22 },
+  cardHeader: {
+    paddingTop: "12px !important",
+    paddingBottom: "12px !important"
+  },
   buttonGroup: { paddingLeft: 16, paddingRight: 16, paddingBottom: 16 },
   yayBtn: {
     color: "green",

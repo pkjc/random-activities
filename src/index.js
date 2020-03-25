@@ -27,6 +27,13 @@ theme.typography.h4 = {
     fontSize: "1.8em"
   }
 };
+theme.typography.h5 = {
+  fontSize: "1.2rem",
+  lineHeight: "1.45",
+  [theme.breakpoints.up("lg")]: {
+    fontSize: "1.35em"
+  }
+};
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <App />

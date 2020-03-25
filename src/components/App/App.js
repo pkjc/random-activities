@@ -28,8 +28,12 @@ export default function App() {
             >
               <Grid item>
                 <Link href="/" variant="button" className={classes.title}>
-                  <Typography href="/saved" color="initial">
-                    WTFtodo
+                  <Typography
+                    href="/saved"
+                    color="initial"
+                    style={{ textTransform: "Capitalize" }}
+                  >
+                    Bored@Home
                   </Typography>
                 </Link>
               </Grid>

@@ -13,27 +13,25 @@ import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "../../assets/styles";
 
-export default function Activity() {
+export default function Activity(props) {
+  console.log(props.activity);
   const classes = useStyles();
   return (
     <Grid container md={6} xs={11} lg={5} item>
       <Card className={classes.card}>
         <CardHeader
-          classes={{ root: classes.cardHeader, avatar: classes.avatar }}
+          className={classes.cardHeader}
           title={
-            <Typography
-              color="textSecondary"
-              className={classes.cardHeaderTitle}
-            >
-              #watching
+            <Typography color="textPrimary" className={classes.cardHeaderTitle}>
+              {props.activity.category}
             </Typography>
           }
         />
         <Divider />
         <CardMedia
           className={classes.media}
-          image="https://i.picsum.photos/id/1/5616/3744.jpg"
-          title="Paella dish"
+          image={props.activity.image}
+          title={props.activity.title}
         />
         <CardContent className={classes.cardContent}>
           <Typography
@@ -42,7 +40,7 @@ export default function Activity() {
             variant="h4"
             component="h1"
           >
-            Watch Some Dcoumentaries on DocumentaryHeaven.com
+            {props.activity.title}
           </Typography>
           <Typography
             variant="h5"
@@ -50,9 +48,10 @@ export default function Activity() {
             color="textSecondary"
             component="p"
           >
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
+            {props.activity.description}{" "}
+            <span>
+              <a href={props.activity.url}>Visit</a>
+            </span>
           </Typography>
         </CardContent>
         <CardActions>
@@ -62,10 +61,20 @@ export default function Activity() {
             size="medium"
             aria-label="outlined primary button group"
           >
-            <Button startIcon={<ThumbUpIcon />} className={classes.yayBtn}>
+            <Button
+              startIcon={<ThumbUpIcon />}
+              className={classes.yayBtn}
+              onClick={() => {
+                props.dopeHandler();
+              }}
+            >
               Dope
             </Button>
-            <Button startIcon={<ThumbDownIcon />} className={classes.nayBtn}>
+            <Button
+              startIcon={<ThumbDownIcon />}
+              className={classes.nayBtn}
+              onClick={props.nopeHandler()}
+            >
               Nope
             </Button>
           </ButtonGroup>
