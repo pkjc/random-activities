@@ -14,7 +14,6 @@ import Grid from "@material-ui/core/Grid";
 import useStyles from "../../assets/styles";
 
 export default function Activity(props) {
-  console.log(props.activity);
   const classes = useStyles();
   return (
     <Grid container md={6} xs={11} lg={5} item>
@@ -73,7 +72,9 @@ export default function Activity(props) {
             <Button
               startIcon={<ThumbDownIcon />}
               className={classes.nayBtn}
-              onClick={props.nopeHandler()}
+              onClick={() => {
+                props.dopeHandler();
+              }}
             >
               Nope
             </Button>

@@ -6,31 +6,42 @@ import data from "../../assets/data";
 
 export default function Home() {
   const [activityId, setActivityId] = useState(0);
-  const [activities, setActivities] = useState([]);
+  // const [activities, setActivities] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  let alreadySelectedIds = [];
+  const [alreadySelectedIds, setAlreadySelectedIds] = useState([]);
+  const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     // 1. pull data from api
     // TODO
 
     //2. Set data in state variable
-    setActivities(data);
+    // setActivities(data);
 
     // 3. Select random item from data
     selectRandomActivity();
 
     // 4. Change loading to false
-    setIsLoading(false);
   }, []);
 
   const selectRandomActivity = () => {
-    let randomId = getRandomInt(0, activities.length);
+    if (counter >= data.length) {
+      console.log("no more activities");
+      return;
+    }
+    let randomId = getRandomInt(0, data.length);
+    setCounter(counter + 1);
     while (alreadySelectedIds.includes(randomId)) {
-      randomId = getRandomInt(0, activities.length);
+      if (counter >= data.length) {
+        console.log("no more activities");
+        return;
+      }
+      randomId = getRandomInt(0, data.length);
+      setCounter(counter + 1);
     }
     setActivityId(randomId);
-    alreadySelectedIds.push(randomId);
+    setAlreadySelectedIds([...alreadySelectedIds, randomId]);
+    setIsLoading(false);
   };
 
   const dopeHandler = () => {
@@ -50,9 +61,9 @@ export default function Home() {
       justify="center"
       alignItems="center"
     >
-      {!isLoading && (
+      {!isLoading && counter <= data.length && (
         <Activity
-          activity={activities[activityId]}
+          activity={data[activityId]}
           dopeHandler={dopeHandler}
           nopeHandler={nopeHandler}
         />
