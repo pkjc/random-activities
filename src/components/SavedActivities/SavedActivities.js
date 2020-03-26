@@ -49,7 +49,12 @@ function SavedActivity(props) {
         title={savedActivity.title}
       />
       <CardContent className={classes.cardContent}>
-        <Typography gutterBottom variant="h6" component="h2">
+        <Typography
+          gutterBottom
+          variant="h6"
+          component="h2"
+          style={{ lineHeight: 1.3, fontWeight: "bold" }}
+        >
           {savedActivity.title}
         </Typography>
         <Typography>{savedActivity.description}</Typography>
@@ -76,15 +81,26 @@ export default function SavedActivities() {
     JSON.parse(localStorage.getItem("savedActivities")) || []
   );
 
-  console.log(savedActivities);
-
   useEffect(() => {
     // remove from localStorage
+    localStorage.setItem("savedActivities", JSON.stringify(savedActivities));
   }, [savedActivities]);
 
   const removeSavedActivity = savedActivityId => {
+    console.log(
+      savedActivities.filter(function(savedActivity) {
+        savedActivity = JSON.parse(savedActivity);
+        return savedActivity.id !== savedActivityId;
+      })
+    );
+
     // remove from state variable
-    setSavedActivities([]);
+    setSavedActivities(
+      savedActivities.filter(function(savedActivity) {
+        savedActivity = JSON.parse(savedActivity);
+        return savedActivity.id !== savedActivityId;
+      })
+    );
   };
   const renderSavedActivity = savedActivity => {
     savedActivity = JSON.parse(savedActivity);
@@ -102,11 +118,21 @@ export default function SavedActivities() {
       <CssBaseline />
       <Container className={classes.cardGrid} maxWidth="md">
         <Grid container spacing={4}>
-          {savedActivities.length < 1
-            ? "No Saved Activities :("
-            : savedActivities.map(savedActivity =>
-                renderSavedActivity(savedActivity)
-              )}
+          {savedActivities.length < 1 ? (
+            <Typography
+              variant="h4"
+              align="center"
+              justify="center"
+              color="textSecondary"
+              component="p"
+            >
+              No Saved Activities. <a href="/">Go save some</a>!
+            </Typography>
+          ) : (
+            savedActivities.map(savedActivity =>
+              renderSavedActivity(savedActivity)
+            )
+          )}
         </Grid>
       </Container>
     </React.Fragment>

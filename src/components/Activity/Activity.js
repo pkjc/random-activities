@@ -8,11 +8,12 @@ import Typography from "@material-ui/core/Typography";
 import { Divider } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import ThumbDownIcon from "@material-ui/icons/ThumbDown";
+import ThumbUpOutlined from "@material-ui/icons/ThumbUpOutlined";
+import ThumbDownOutlined from "@material-ui/icons/ThumbDownOutlined";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "../../assets/styles";
-
+import Link from "@material-ui/core/Link";
+import CallMadeIcon from "@material-ui/icons/CallMade";
 export default function Activity(props) {
   const classes = useStyles();
   return (
@@ -21,7 +22,7 @@ export default function Activity(props) {
         <CardHeader
           className={classes.cardHeader}
           title={
-            <Typography color="textPrimary" className={classes.cardHeaderTitle}>
+            <Typography className={classes.cardHeaderTitle}>
               {props.activity.category}
             </Typography>
           }
@@ -33,14 +34,16 @@ export default function Activity(props) {
           title={props.activity.title}
         />
         <CardContent className={classes.cardContent}>
-          <Typography
-            className={classes.cardContentTitle}
-            gutterBottom
-            variant="h4"
-            component="h1"
-          >
-            {props.activity.title}
-          </Typography>
+          <Link href={props.activity.url}>
+            <Typography
+              className={classes.cardContentTitle}
+              gutterBottom
+              variant="h4"
+              component="h1"
+            >
+              {props.activity.title}
+            </Typography>
+          </Link>
           <Typography
             variant="h5"
             className={classes.cardContentPara}
@@ -48,9 +51,6 @@ export default function Activity(props) {
             component="p"
           >
             {props.activity.description}{" "}
-            <span>
-              <a href={props.activity.url}>Visit</a>
-            </span>
           </Typography>
         </CardContent>
         <CardActions>
@@ -61,7 +61,7 @@ export default function Activity(props) {
             aria-label="outlined primary button group"
           >
             <Button
-              startIcon={<ThumbUpIcon />}
+              startIcon={<ThumbUpOutlined />}
               className={classes.yayBtn}
               onClick={() => {
                 props.dopeHandler(props.activity);
@@ -70,10 +70,18 @@ export default function Activity(props) {
               Dope
             </Button>
             <Button
-              startIcon={<ThumbDownIcon />}
+              color="primary"
+              startIcon={<CallMadeIcon />}
+              className={classes.visitBtn}
+              href={props.activity.url}
+            >
+              Check it out
+            </Button>
+            <Button
+              startIcon={<ThumbDownOutlined />}
               className={classes.nayBtn}
               onClick={() => {
-                props.dopeHandler();
+                props.nopeHandler();
               }}
             >
               Nope

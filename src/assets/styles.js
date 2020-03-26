@@ -23,7 +23,9 @@ const useStyles = makeStyles(theme => ({
     padding: "0px"
   },
   cardHeaderTitle: {
-    fontSize: 18
+    fontSize: 18,
+    fontStyle: "Italic",
+    color: "#444"
   },
   cardContentTitle: {
     fontWeight: 700
@@ -32,16 +34,25 @@ const useStyles = makeStyles(theme => ({
     paddingTop: "12px !important",
     paddingBottom: "12px !important"
   },
-  buttonGroup: { paddingLeft: 16, paddingRight: 16, paddingBottom: 16 },
+  buttonGroup: {
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingBottom: 16
+  },
   yayBtn: {
-    color: "green",
-    borderColor: "green",
-    fontSize: 18
+    color: "#609860",
+    borderColor: "#609860",
+    fontSize: 16,
+    textTransform: "Capitalize"
   },
   nayBtn: {
-    color: "red",
-    borderColor: "red",
-    fontSize: 18
+    fontSize: 16,
+    color: "#6f6d6d",
+    textTransform: "Capitalize"
+  },
+  visitBtn: {
+    fontSize: 16,
+    textTransform: "Capitalize"
   },
   stickToBottom: {
     width: "100%",

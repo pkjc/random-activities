@@ -1,24 +1,37 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import PublishIcon from "@material-ui/icons/Publish";
+import ThumbUpOutlined from "@material-ui/icons/ThumbUpOutlined";
+import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useStyles from "../../assets/styles";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link as RouterLink
+} from "react-router-dom";
 import SavedActivities from "../../components/SavedActivities/SavedActivities";
 import Home from "../../components/Home/Home";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 
 export default function App() {
   const classes = useStyles();
 
+  const [savedActivitiesData, setSavedActivitiesData] = React.useState(
+    JSON.parse(localStorage.getItem("savedActivities")) || []
+  );
+
   return (
     <div className={classes.root}>
       <Router>
-        <AppBar className={classes.appBar} elevation={0} position="static">
+        <AppBar
+          className={classes.appBar}
+          color="primary"
+          elevation={0}
+          position="static"
+        >
           <Toolbar>
             <Grid
               justify="space-between" // Add it here :)
@@ -27,44 +40,57 @@ export default function App() {
               spacing={0}
             >
               <Grid item>
-                <Link href="/" variant="button" className={classes.title}>
+                <RouterLink
+                  to="/"
+                  variant="button"
+                  className={classes.title}
+                  style={{ textDecoration: "none" }}
+                >
                   <Typography
-                    href="/saved"
-                    color="initial"
+                    color="inherit"
                     style={{ textTransform: "Capitalize" }}
                   >
                     Bored@Home
                   </Typography>
-                </Link>
+                </RouterLink>
               </Grid>
               <Grid item>
                 <Button
                   color="inherit"
                   className={classes.button}
-                  startIcon={<PublishIcon />}
                   size="small"
-                  variant="outlined"
+                  style={{ borderBottom: "1px solid", borderRadius: 0 }}
                 >
                   Suggest Activity
                 </Button>
               </Grid>
               <Grid item>
-                <Button
-                  color="inherit"
-                  className={classes.button}
-                  startIcon={<ThumbUpIcon />}
-                  size="small"
-                  href="/saved"
-                >
-                  Saved
-                </Button>
+                <RouterLink to="/saved" style={{ textDecoration: "none" }}>
+                  <Button
+                    className={classes.button}
+                    style={{ background: "#609860" }}
+                    startIcon={<ThumbUpOutlined />}
+                    size="medium"
+                    color="primary"
+                    variant="contained"
+                  >
+                    {savedActivitiesData && savedActivitiesData.length} Saved
+                  </Button>
+                </RouterLink>
               </Grid>
             </Grid>
           </Toolbar>
         </AppBar>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/saved" component={SavedActivities} />
+          <Route exact path="/">
+            <Home
+              savedActivities={savedActivitiesData}
+              setSavedActivities={setSavedActivitiesData}
+            />
+          </Route>
+          <Route path="/saved">
+            <SavedActivities />
+          </Route>
         </Switch>
       </Router>
     </div>

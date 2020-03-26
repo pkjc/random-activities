@@ -4,7 +4,7 @@ import useStyles from "../../assets/styles";
 import Activity from "../Activity/Activity";
 import data from "../../assets/data";
 
-export default function Home() {
+export default function Home(props) {
   // localStorage.clear();
   const [activityId, setActivityId] = useState(0);
   // const [activities, setActivities] = useState([]);
@@ -12,9 +12,7 @@ export default function Home() {
   const [alreadySelectedIds, setAlreadySelectedIds] = useState([]);
   const [counter, setCounter] = useState(0);
 
-  const [savedActivities, setSavedActivities] = React.useState(
-    JSON.parse(localStorage.getItem("savedActivities")) || []
-  );
+  const { savedActivities, setSavedActivities } = props;
 
   useEffect(() => {
     // add to localStorage
