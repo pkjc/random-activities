@@ -19,7 +19,7 @@ export default function Activity(props) {
   return (
     <Grid container md={6} xs={11} lg={5} item>
       <Card className={classes.card}>
-        <CardHeader
+        {/* <CardHeader
           className={classes.cardHeader}
           title={
             <Typography className={classes.cardHeaderTitle}>
@@ -27,13 +27,16 @@ export default function Activity(props) {
             </Typography>
           }
         />
-        <Divider />
+        <Divider /> */}
         <CardMedia
           className={classes.media}
           image={props.activity.image}
           title={props.activity.title}
         />
         <CardContent className={classes.cardContent}>
+          <Typography className={classes.cardHeaderTitle}>
+            {props.activity.category}
+          </Typography>
           <Link href={props.activity.url}>
             <Typography
               className={classes.cardContentTitle}

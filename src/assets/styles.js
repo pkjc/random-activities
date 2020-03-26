@@ -23,9 +23,9 @@ const useStyles = makeStyles(theme => ({
     padding: "0px"
   },
   cardHeaderTitle: {
-    fontSize: 18,
+    fontSize: 17,
     fontStyle: "Italic",
-    color: "#444"
+    color: "#777"
   },
   cardContentTitle: {
     fontWeight: 700

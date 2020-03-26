@@ -9,6 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { Link } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -49,17 +50,24 @@ function SavedActivity(props) {
         title={savedActivity.title}
       />
       <CardContent className={classes.cardContent}>
-        <Typography
-          gutterBottom
-          variant="h6"
-          component="h2"
-          style={{ lineHeight: 1.3, fontWeight: "bold" }}
-        >
-          {savedActivity.title}
-        </Typography>
+        <Link href={savedActivity.url}>
+          <Typography
+            gutterBottom
+            variant="h6"
+            component="h2"
+            style={{ lineHeight: 1.3, fontWeight: "bold" }}
+          >
+            {savedActivity.title}
+          </Typography>
+        </Link>
         <Typography>{savedActivity.description}</Typography>
       </CardContent>
       <CardActions>
+        <Link href={savedActivity.url}>
+          <Button size="medium" color="primary">
+            Check it out
+          </Button>
+        </Link>
         <Button
           size="medium"
           color="primary"

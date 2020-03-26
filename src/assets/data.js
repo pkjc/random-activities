@@ -7,7 +7,7 @@ export default [
     description:
       "It's time to read that book that's been sat on your shelf for the last few months." +
       "Get inspired by a best-selling memoir, indulge in a celeb-approved book or escape to a different world for a few hours. Hot drink and blanket desirable.",
-    category: "#reading"
+    category: "#read"
   },
   {
     id: 1,
@@ -17,7 +17,7 @@ export default [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
 
-    category: "#watching"
+    category: "#watch"
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ export default [
     title: "Listen to the song called You should calm down by Taylor Swift",
     description:
       "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters",
-    category: "#listening"
+    category: "#listen"
   },
   {
     id: 3,
@@ -35,6 +35,6 @@ export default [
     title: "Play the Word Puzzle game",
     description:
       "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks",
-    category: "#playing"
+    category: "#play"
   }
 ];
