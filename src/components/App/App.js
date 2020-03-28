@@ -15,6 +15,7 @@ import {
 import SavedActivities from "../../components/SavedActivities/SavedActivities";
 import Home from "../../components/Home/Home";
 import Grid from "@material-ui/core/Grid";
+import { Link } from "@material-ui/core";
 
 export default function App() {
   const classes = useStyles();
@@ -58,8 +59,10 @@ export default function App() {
                 <Button
                   color="inherit"
                   className={classes.button}
+                  href="https://forms.gle/SktfRvJJB8hJ6u4FA"
                   size="small"
                   style={{ borderBottom: "1px solid", borderRadius: 0 }}
+                  target="_blank"
                 >
                   Suggest Activity
                 </Button>
@@ -89,7 +92,10 @@ export default function App() {
             />
           </Route>
           <Route path="/saved">
-            <SavedActivities />
+            <SavedActivities
+              savedActivities={savedActivitiesData}
+              setSavedActivities={setSavedActivitiesData}
+            />
           </Route>
         </Switch>
       </Router>

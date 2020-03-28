@@ -3,7 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(theme => ({
   root: { flexGrow: 1 },
   card: {
-    padding: 0
+    padding: 0,
+    maxWidth: 700
   },
   cardContent: {
     paddingLeft: 22,
@@ -13,8 +14,10 @@ const useStyles = makeStyles(theme => ({
   },
   cardContentPara: {},
   media: {
-    height: 0,
-    paddingTop: "56.25%" // 16:9
+    height: 400,
+    borderBottom: "1px solid #ddd"
+    // // paddingTop: "51.25%",
+    // backgroundSize: "708px auto !important"
   },
   avatar: {
     border: "1px solid #ddd",
@@ -28,31 +31,33 @@ const useStyles = makeStyles(theme => ({
     color: "#777"
   },
   cardContentTitle: {
-    fontWeight: 700
+    fontWeight: 700,
+    marginTop: 5
   },
   cardHeader: {
     paddingTop: "12px !important",
     paddingBottom: "12px !important"
   },
   buttonGroup: {
-    paddingLeft: 16,
-    paddingRight: 16,
-    paddingBottom: 16
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 10
   },
   yayBtn: {
     color: "#609860",
     borderColor: "#609860",
-    fontSize: 16,
-    textTransform: "Capitalize"
+    textTransform: "Capitalize",
+    fontSize: 16
   },
   nayBtn: {
-    fontSize: 16,
-    color: "#6f6d6d",
-    textTransform: "Capitalize"
+    color: "#555",
+    borderColor: "#aaa",
+    textTransform: "Capitalize",
+    fontSize: 16
   },
   visitBtn: {
-    fontSize: 16,
-    textTransform: "Capitalize"
+    textTransform: "Capitalize",
+    fontSize: 16
   },
   stickToBottom: {
     width: "100%",
@@ -69,6 +74,11 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`
+  },
+  homeAlert: {
+    marginTop: 12,
+    alignItems: "center",
+    justify: "center"
   }
 }));
 

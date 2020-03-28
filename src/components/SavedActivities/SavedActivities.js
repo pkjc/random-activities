@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link } from "@material-ui/core";
+import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -82,12 +83,13 @@ function SavedActivity(props) {
   );
 }
 
-export default function SavedActivities() {
+export default function SavedActivities(props) {
   const classes = useStyles();
 
-  const [savedActivities, setSavedActivities] = React.useState(
-    JSON.parse(localStorage.getItem("savedActivities")) || []
-  );
+  // const [savedActivities, setSavedActivities] = React.useState(
+  //   JSON.parse(localStorage.getItem("savedActivities")) || []
+  // );
+  const { savedActivities, setSavedActivities } = props;
 
   useEffect(() => {
     // remove from localStorage
@@ -134,7 +136,7 @@ export default function SavedActivities() {
               color="textSecondary"
               component="p"
             >
-              No Saved Activities. <a href="/">Go save some</a>!
+              No Saved Activities. <RouterLink to="/">Go save some!</RouterLink>
             </Typography>
           ) : (
             savedActivities.map(savedActivity =>

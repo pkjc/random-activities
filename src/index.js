@@ -7,7 +7,6 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 const theme = createMuiTheme({
   typography: {
     fontFamily: [
-      "Lato",
       "-apple-system",
       "BlinkMacSystemFont",
       '"Segoe UI"',
@@ -22,13 +21,13 @@ const theme = createMuiTheme({
   }
 });
 theme.typography.h4 = {
-  fontSize: "1.5rem",
+  fontSize: "1.65rem",
   [theme.breakpoints.up("lg")]: {
     fontSize: "1.8em"
   }
 };
 theme.typography.h5 = {
-  fontSize: "1.2rem",
+  fontSize: "1.07rem",
   lineHeight: "1.45",
   [theme.breakpoints.up("lg")]: {
     fontSize: "1.25em"

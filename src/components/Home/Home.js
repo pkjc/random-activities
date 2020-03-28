@@ -2,62 +2,96 @@ import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "../../assets/styles";
 import Activity from "../Activity/Activity";
-import data from "../../assets/data";
+// import data from "../../assets/data";
+import Tabletop from "tabletop";
+import Alert from "@material-ui/lab/Alert";
+import Link from "@material-ui/core/Link";
+import { Typography } from "@material-ui/core";
+import HeroContent from "./HeroContent";
+import NoMoreContent from "./NoMoreContent";
 
 export default function Home(props) {
-  // localStorage.clear();
-  const [activityId, setActivityId] = useState(0);
-  // const [activities, setActivities] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [activity, setActivity] = useState({});
+  const [isRouletteStarted, setIsRouletteStarted] = useState(false);
   const [alreadySelectedIds, setAlreadySelectedIds] = useState([]);
   const [counter, setCounter] = useState(0);
-
   const { savedActivities, setSavedActivities } = props;
+  const [activitiesData, setActivitiesData] = useState([]);
+  const [noContent, setNoContent] = useState(false);
+
+  function processFetchedData(dataFromSheet, tabletop) {
+    setActivitiesData(dataFromSheet);
+    // selectRandomActivity(dataFromSheet);
+    // setIsLoading(false);
+  }
+  function init() {
+    const publicSpreadsheetUrl =
+      "https://docs.google.com/spreadsheets/d/1S2MGuA1tKHHr4MWivcLw47q0gvF4iPv_hB1n_5xcPBA/";
+    Tabletop.init({
+      key: publicSpreadsheetUrl,
+      callback: processFetchedData,
+      simpleSheet: true
+    });
+  }
 
   useEffect(() => {
-    // add to localStorage
+    // const fetchData = async () => {
+    //   await init();
+    // };
+    // fetchData();
+    init();
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem("savedActivities", JSON.stringify(savedActivities));
   }, [savedActivities]);
 
-  useEffect(() => {
-    // 1. pull data from api
-    // TODO
-
-    //2. Set data in state variable
-    // setActivities(data);
-
-    // 3. Select random item from data
-    selectRandomActivity();
-  }, []);
-
-  const selectRandomActivity = () => {
-    if (counter >= data.length) {
-      console.log("no more activities");
+  const startRoulette = () => {
+    console.log("selecting random activity.");
+    if (counter >= activitiesData.length) {
+      setNoContent(true);
       return;
     }
-    let randomId = getRandomInt(0, data.length);
+    let randomId = getRandomInt(0, activitiesData.length);
     setCounter(counter + 1);
     while (alreadySelectedIds.includes(randomId)) {
-      if (counter >= data.length) {
+      if (counter >= activitiesData.length) {
         console.log("no more activities");
+        setNoContent(true);
         return;
       }
-      randomId = getRandomInt(0, data.length);
+      randomId = getRandomInt(0, activitiesData.length);
       setCounter(counter + 1);
     }
-    setActivityId(randomId);
+    setActivity(activitiesData[randomId]);
     setAlreadySelectedIds([...alreadySelectedIds, randomId]);
-    setIsLoading(false);
+    setIsRouletteStarted(true);
   };
 
+  const renderContent = () => {
+    if (isEmpty(activity)) {
+      <HeroContent selectRandomActivity={startRoulette} />;
+    }
+    if (activitiesData.length > 0 && counter >= activitiesData.length) {
+      <NoMoreContent />;
+    }
+    if (activity && !isRouletteStarted) {
+      <Activity
+        activity={activity}
+        dopeHandler={dopeHandler}
+        nopeHandler={nopeHandler}
+      />;
+    }
+  };
   const dopeHandler = savedActivity => {
-    if (!savedActivities.includes(JSON.stringify(savedActivity)))
+    if (!savedActivities.includes(JSON.stringify(savedActivity))) {
       setSavedActivities([...savedActivities, JSON.stringify(savedActivity)]);
-    selectRandomActivity();
+    }
+    startRoulette();
   };
 
   const nopeHandler = () => {
-    selectRandomActivity();
+    startRoulette();
   };
 
   const classes = useStyles();
@@ -69,9 +103,15 @@ export default function Home(props) {
       justify="center"
       alignItems="center"
     >
-      {!isLoading && counter <= data.length && (
+      {noContent && <NoMoreContent />}
+
+      {!isRouletteStarted && !noContent && (
+        <HeroContent startRouletteHandler={startRoulette} />
+      )}
+
+      {isRouletteStarted && !noContent && (
         <Activity
-          activity={data[activityId]}
+          activity={activity}
           dopeHandler={dopeHandler}
           nopeHandler={nopeHandler}
         />
@@ -80,9 +120,16 @@ export default function Home(props) {
   );
 }
 
-//Util
+//Utils
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
+function isEmpty(obj) {
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) return false;
+  }
+  return true;
 }
