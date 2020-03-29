@@ -67,7 +67,7 @@ const useStyles = makeStyles(theme => ({
     background: "#fff"
   },
   title: {
-    color: "#fff",
+    color: theme.palette.secondary.main,
     textTransform: "Capitalize",
     fontWeight: "bold"
   },
