@@ -44,7 +44,7 @@ export default function HeroContent(props) {
       {/* <CssBaseline /> */}
       <div
         className={classes.heroContent}
-        style={{ paddingTop: "34vh", paddingBottom: "38vh" }}
+        style={{ paddingTop: "15vh", paddingBottom: "15vh" }}
       >
         {props.error ? (
           <React.Fragment>
@@ -74,7 +74,6 @@ export default function HeroContent(props) {
               variant="h2"
               align="center"
               color="primary"
-              style={{ fontWeight: "normal" }}
             >
               Bored at home?
             </Typography>
@@ -84,7 +83,7 @@ export default function HeroContent(props) {
               color="textSecondary"
               className={classes.heroContentSubtitle}
             >
-              Find some fun things to do.
+              Lets find something fun to do!
             </Typography>
           </React.Fragment>
         )}
@@ -115,7 +114,7 @@ export default function HeroContent(props) {
                   }}
                   className={classes.heroButton}
                 >
-                  Random fun thing to do
+                  Random fun activity
                 </Button>
               )}
             </Grid>

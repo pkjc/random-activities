@@ -35,6 +35,12 @@ const theme = createMuiTheme({
   }
 });
 
+theme.typography.h2 = {
+  fontSize: "2.5rem",
+  [theme.breakpoints.up("lg")]: {
+    fontSize: "4rem"
+  }
+};
 theme.typography.h4 = {
   fontSize: "1.5rem",
   lineHeight: "1.2",
