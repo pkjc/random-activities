@@ -24,7 +24,7 @@ export default function HeroContent(props) {
       // border: "1px solid #ddd"
     },
     heroContentSubtitle: {
-      fontSize: "2.45rem",
+      fontSize: "2rem",
       fontWeight: "normal",
       paddingTop: 5,
       ["@media (max-width:600px)"]: {
