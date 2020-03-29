@@ -4,7 +4,8 @@ const useStyles = makeStyles(theme => ({
   root: { flexGrow: 1 },
   card: {
     padding: 0,
-    maxWidth: 700
+    maxWidth: 700,
+    marginTop: 60
   },
   cardContent: {
     paddingLeft: 22,
@@ -31,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     color: "#777"
   },
   cardContentTitle: {
-    fontWeight: 700,
+    fontWeight: "bold",
     marginTop: 5
   },
   cardHeader: {
@@ -41,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   buttonGroup: {
     paddingLeft: 10,
     paddingRight: 10,
-    paddingBottom: 10
+    paddingBottom: 0
   },
   yayBtn: {
     color: "#609860",
@@ -66,7 +67,9 @@ const useStyles = makeStyles(theme => ({
     background: "#fff"
   },
   title: {
-    color: "#fff"
+    color: "#fff",
+    textTransform: "Capitalize",
+    fontWeight: "bold"
   },
   grid: {
     height: "100%",

@@ -18,14 +18,10 @@ import SendIcon from "@material-ui/icons/Send";
 import ShareIcon from "@material-ui/icons/Share";
 
 export default function HeroContent(props) {
-  console.log("rendering hero content");
   const useStyles = makeStyles(theme => ({
     heroContent: {
-      backgroundColor: theme.palette.background.paper,
-      padding: theme.spacing(6, 6, 7),
-      marginTop: "15%",
-      borderRadius: 7,
-      border: "1px solid #ddd"
+      backgroundColor: theme.palette.secondary.main
+      // border: "1px solid #ddd"
     },
     heroContentSubtitle: {
       fontSize: "2.45rem",
@@ -36,16 +32,20 @@ export default function HeroContent(props) {
       marginTop: theme.spacing(4)
     },
     heroButton: {
-      textTransform: "Capitalize",
-      fontSize: 20
+      textTransform: "none",
+      fontSize: 20,
+      fontWeight: "normal"
     }
   }));
   const classes = useStyles();
 
   return (
-    <Grid item xs={10} md={10} lg={8}>
-      <CssBaseline />
-      <div className={classes.heroContent}>
+    <Grid item xs={12}>
+      {/* <CssBaseline /> */}
+      <div
+        className={classes.heroContent}
+        style={{ paddingTop: "34vh", paddingBottom: "38vh" }}
+      >
         {props.error ? (
           <React.Fragment>
             <Typography
@@ -115,7 +115,7 @@ export default function HeroContent(props) {
                   }}
                   className={classes.heroButton}
                 >
-                  Random Fun thing to do
+                  Random fun thing to do
                 </Button>
               )}
             </Grid>

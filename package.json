@@ -9,6 +9,7 @@
     "@material-ui/core": "latest",
     "@material-ui/icons": "4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.46",
+    "localforage": "^1.7.3",
     "react": "latest",
     "react-dom": "latest",
     "react-router-dom": "5.1.2",

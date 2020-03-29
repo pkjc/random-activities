@@ -16,12 +16,17 @@ import SavedActivities from "../../components/SavedActivities/SavedActivities";
 import Home from "../../components/Home/Home";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "@material-ui/core";
+import * as localDb from "../../services/db";
 
 export default function App() {
   const classes = useStyles();
 
   const [savedActivitiesData, setSavedActivitiesData] = React.useState(
     JSON.parse(localStorage.getItem("savedActivities")) || []
+  );
+
+  const [pickedActivitiesData, setPickedActivitiesData] = React.useState(
+    JSON.parse(localStorage.getItem("pickedActivities")) || []
   );
 
   return (
@@ -47,10 +52,7 @@ export default function App() {
                   className={classes.title}
                   style={{ textDecoration: "none" }}
                 >
-                  <Typography
-                    color="inherit"
-                    style={{ textTransform: "Capitalize" }}
-                  >
+                  <Typography color="inherit" className={classes.title}>
                     Bored@Home
                   </Typography>
                 </RouterLink>
@@ -60,21 +62,23 @@ export default function App() {
                   color="inherit"
                   className={classes.button}
                   href="https://forms.gle/SktfRvJJB8hJ6u4FA"
-                  size="small"
-                  style={{ borderBottom: "1px solid", borderRadius: 0 }}
+                  size="medium"
                   target="_blank"
+                  style={{
+                    textTransform: "none",
+                    marginRight: 18,
+                    fontSize: "1rem"
+                  }}
                 >
                   Suggest Activity
                 </Button>
-              </Grid>
-              <Grid item>
                 <RouterLink to="/saved" style={{ textDecoration: "none" }}>
                   <Button
                     className={classes.button}
-                    style={{ background: "#609860" }}
                     startIcon={<ThumbUpOutlined />}
+                    style={{ color: "#000" }}
                     size="medium"
-                    color="primary"
+                    color="secondary"
                     variant="contained"
                   >
                     {savedActivitiesData && savedActivitiesData.length} Saved
@@ -89,6 +93,8 @@ export default function App() {
             <Home
               savedActivities={savedActivitiesData}
               setSavedActivities={setSavedActivitiesData}
+              alreadySelectedIds={pickedActivitiesData}
+              setAlreadySelectedIds={setPickedActivitiesData}
             />
           </Route>
           <Route path="/saved">

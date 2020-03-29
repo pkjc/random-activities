@@ -25,7 +25,6 @@ export default function Activity(props) {
       lg={11}
       alignItems="center"
       justify="center"
-      item
     >
       <Card className={classes.card}>
         {/* <CardHeader
@@ -99,10 +98,20 @@ export default function Activity(props) {
                 props.nopeHandler();
               }}
             >
-              Nope
+              Skip
             </Button>
           </ButtonGroup>
         </CardActions>
+        <Typography
+          variant="body1"
+          color="textSecondary"
+          style={{
+            textAlign: "center",
+            padding: "0 10% 1.5% 10%"
+          }}
+        >
+          Click 'Save' or 'Skip' to see next.
+        </Typography>
       </Card>
     </Grid>
   );

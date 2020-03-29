@@ -27,7 +27,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column"
   },
   cardMedia: {
-    paddingTop: "56.25%" // 16:9
+    paddingTop: "56.25%", // 16:9,
+    borderBottom: "1px solid #ddd"
   },
   cardContent: {
     flexGrow: 1
@@ -56,7 +57,7 @@ function SavedActivity(props) {
             gutterBottom
             variant="h6"
             component="h2"
-            style={{ lineHeight: 1.3, fontWeight: "bold" }}
+            style={{ lineHeight: 1.25, fontSize: "1.5rem", fontWeight: "bold" }}
           >
             {savedActivity.title}
           </Typography>
@@ -115,7 +116,7 @@ export default function SavedActivities(props) {
   const renderSavedActivity = savedActivity => {
     savedActivity = JSON.parse(savedActivity);
     return (
-      <Grid item key={savedActivity.id} xs={12} sm={6} md={4}>
+      <Grid item key={savedActivity.id} xs={12} sm={6} md={6}>
         <SavedActivity
           savedActivity={savedActivity}
           removeSavedActivity={removeSavedActivity}
