@@ -76,7 +76,7 @@ export default function App() {
                   <Button
                     className={classes.button}
                     startIcon={<ThumbUpOutlined />}
-                    style={{ color: "#000" }}
+                    style={{ color: "#7d4cdb" }}
                     size="medium"
                     color="secondary"
                     variant="contained"
