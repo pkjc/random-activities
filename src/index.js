@@ -36,7 +36,7 @@ const theme = createMuiTheme({
 });
 
 theme.typography.h2 = {
-  fontSize: "2.5rem",
+  fontSize: "3rem",
   [theme.breakpoints.up("lg")]: {
     fontSize: "4rem"
   }

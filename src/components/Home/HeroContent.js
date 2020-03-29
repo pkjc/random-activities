@@ -26,7 +26,11 @@ export default function HeroContent(props) {
     heroContentSubtitle: {
       fontSize: "2.45rem",
       fontWeight: "normal",
-      paddingTop: 5
+      paddingTop: 5,
+      ["@media (max-width:600px)"]: {
+        // eslint-disable-line no-useless-computed-key
+        fontSize: "1.7rem"
+      }
     },
     heroButtons: {
       marginTop: theme.spacing(4)
@@ -78,7 +82,7 @@ export default function HeroContent(props) {
               Bored at home?
             </Typography>
             <Typography
-              variant="h4"
+              variant="h3"
               align="center"
               color="textSecondary"
               className={classes.heroContentSubtitle}
@@ -126,7 +130,7 @@ export default function HeroContent(props) {
                 startIcon={<ShareIcon />}
                 className={classes.heroButton}
               >
-                Share this App
+                Share this!
               </Button>
             </Grid>
           </Grid>
