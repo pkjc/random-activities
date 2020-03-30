@@ -2,7 +2,6 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import ThumbUpOutlined from "@material-ui/icons/ThumbUpOutlined";
-// import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useStyles from "../../assets/styles";
@@ -15,8 +14,6 @@ import {
 import SavedActivities from "../../components/SavedActivities/SavedActivities";
 import Home from "../../components/Home/Home";
 import Grid from "@material-ui/core/Grid";
-import { Link } from "@material-ui/core";
-import * as localDb from "../../services/db";
 
 export default function App() {
   const classes = useStyles();

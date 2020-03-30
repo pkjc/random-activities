@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
-  root: { flexGrow: 1 },
+  root: { flexGrow: 1, minHeight: "100vh" },
   card: {
     padding: 0,
     maxWidth: 700,
@@ -72,7 +72,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold"
   },
   grid: {
-    height: "100%",
+    height: "90%",
     display: "flex"
   },
   appBar: {

@@ -19,6 +19,7 @@ export default function Activity(props) {
   const classes = useStyles();
   return (
     <Grid
+      item
       container
       md={11}
       xs={11}

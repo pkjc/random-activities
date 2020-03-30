@@ -77,27 +77,33 @@ export default function Home(props) {
 
   const classes = useStyles();
   return (
-    <Grid
-      container
-      className={classes.grid}
-      direction="row"
-      justify="center"
-      alignItems="baseline"
-    >
-      {noContent && <NoMoreContent />}
+    <React.Fragment>
+      <Grid
+        container
+        className={classes.grid}
+        direction="row"
+        justify="center"
+        alignItems="baseline"
+        xs={12}
+      >
+        {noContent && <NoMoreContent />}
 
-      {!isRouletteStarted && !noContent && (
-        <HeroContent startRouletteHandler={startRoulette} />
-      )}
+        {!isRouletteStarted && !noContent && (
+          <HeroContent startRouletteHandler={startRoulette} />
+        )}
 
-      {isRouletteStarted && !noContent && (
-        <Activity
-          activity={activity}
-          dopeHandler={dopeHandler}
-          nopeHandler={nopeHandler}
-        />
-      )}
-    </Grid>
+        {isRouletteStarted && !noContent && (
+          <Activity
+            activity={activity}
+            dopeHandler={dopeHandler}
+            nopeHandler={nopeHandler}
+          />
+        )}
+        {/* <Grid item>
+          <StickyFooter />
+        </Grid> */}
+      </Grid>
+    </React.Fragment>
   );
 }
 

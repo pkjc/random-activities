@@ -15,4 +15,14 @@ body {
 }
 #app {
   display: flex;
+  min-height: 100vh;
+  flex-direction: "column";
+}
+ol li {
+  margin-bottom: 5px;
+  padding: 10px 7px;
+  border: 1px solid rgb(235, 234, 234);
+  line-height: 1.4;
+  background: #eee;
+  border-radius: 6px;
 }
