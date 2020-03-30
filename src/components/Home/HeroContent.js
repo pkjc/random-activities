@@ -140,7 +140,7 @@ export default function HeroContent(props) {
           </div>
         </div>
       </Grid>
-      <Grid item xs={4} style={{ marginBottom: "2rem" }}>
+      <Grid item xs={10} lg={4} md={6} style={{ marginBottom: "2rem" }}>
         <Typography variant="h2" align="center">
           About this site
         </Typography>
