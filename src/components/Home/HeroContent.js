@@ -61,7 +61,7 @@ export default function HeroContent(props) {
                 align="center"
                 color="error"
               >
-                Wow! You have done it all.
+                <img src="https://media1.giphy.com/media/upg0i1m4DLe5q/source.gif" />
               </Typography>
               <Typography
                 variant="h4"
