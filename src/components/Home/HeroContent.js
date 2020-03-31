@@ -61,7 +61,10 @@ export default function HeroContent(props) {
                 align="center"
                 color="error"
               >
-                <img src="https://media1.giphy.com/media/upg0i1m4DLe5q/source.gif" />
+                <img
+                  alt="Bored@Home? Find fun things to do!"
+                  src="https://media1.giphy.com/media/upg0i1m4DLe5q/source.gif"
+                />
               </Typography>
               <Typography
                 variant="h4"
