@@ -1,6 +1,5 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
-
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
@@ -37,12 +36,14 @@ export default function Activity(props) {
           }
         />
         <Divider /> */}
-        <CardMedia
-          component={props.activity.mediaType === "video" ? "iframe" : "img"}
-          className={classes.media}
-          src={props.activity.image}
-          title={props.activity.title}
-        />
+        {props.activity.image && (
+          <CardMedia
+            component={props.activity.mediaType === "video" ? "iframe" : "img"}
+            className={classes.media}
+            src={props.activity.image}
+            title={props.activity.title}
+          />
+        )}
         <CardContent className={classes.cardContent}>
           {/* <Typography className={classes.cardHeaderTitle}>
             {props.activity.category}

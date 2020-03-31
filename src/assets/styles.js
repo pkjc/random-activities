@@ -15,7 +15,11 @@ const useStyles = makeStyles(theme => ({
   },
   cardContentPara: {},
   media: {
-    height: 400,
+    height: 380,
+    // eslint-disable-line no-useless-computed-key
+    ["@media (max-width:600px)"]: {
+      height: 260
+    },
     borderBottom: "1px solid #ddd"
     // // paddingTop: "51.25%",
     // backgroundSize: "708px auto !important"
