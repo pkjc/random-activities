@@ -5,7 +5,7 @@ const useStyles = makeStyles(theme => ({
   card: {
     padding: 0,
     maxWidth: 700,
-    marginTop: 30
+    marginTop: 40
   },
   cardContent: {
     paddingLeft: 22,
@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
   buttonGroup: {
     paddingLeft: 10,
     paddingRight: 10,
-    paddingBottom: 0
+    paddingBottom: 15
   },
   yayBtn: {
     color: "#609860",

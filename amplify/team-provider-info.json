@@ -1,0 +1,15 @@
+{
+    "bored": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-boredathome-bored-200733-authRole",
+            "UnauthRoleArn": "arn:aws:iam::933370373170:role/amplify-boredathome-bored-200733-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::933370373170:role/amplify-boredathome-bored-200733-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-boredathome-bored-200733-deployment",
+            "UnauthRoleName": "amplify-boredathome-bored-200733-unauthRole",
+            "StackName": "amplify-boredathome-bored-200733",
+            "StackId": "arn:aws:cloudformation:us-east-2:933370373170:stack/amplify-boredathome-bored-200733/717242b0-803f-11ea-86a8-06f0515d2d5c",
+            "AmplifyAppId": "d2wf1d2u66fjjy"
+        }
+    }
+}

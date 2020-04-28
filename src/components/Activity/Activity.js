@@ -64,7 +64,7 @@ export default function Activity(props) {
             color="textSecondary"
             component="p"
           >
-            {props.activity.description}{" "}
+            {props.activity.description}
           </Typography>
         </CardContent>
         <CardActions>
@@ -81,7 +81,7 @@ export default function Activity(props) {
                 props.dopeHandler(props.activity);
               }}
             >
-              Save
+              Save for later
             </Button>
             <Button
               color="primary"
@@ -104,7 +104,7 @@ export default function Activity(props) {
             </Button>
           </ButtonGroup>
         </CardActions>
-        <Typography
+        {/* <Typography
           variant="body1"
           color="textSecondary"
           style={{
@@ -113,7 +113,7 @@ export default function Activity(props) {
           }}
         >
           Click 'Save' or 'Skip' to see next.
-        </Typography>
+        </Typography> */}
       </Card>
     </Grid>
   );

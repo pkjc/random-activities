@@ -9,7 +9,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link as RouterLink
+  Link as RouterLink,
 } from "react-router-dom";
 import SavedActivities from "../../components/SavedActivities/SavedActivities";
 import Home from "../../components/Home/Home";
@@ -64,7 +64,7 @@ export default function App() {
                   style={{
                     textTransform: "none",
                     marginRight: 18,
-                    fontSize: "1rem"
+                    fontSize: "1rem",
                   }}
                 >
                   Suggest Activity

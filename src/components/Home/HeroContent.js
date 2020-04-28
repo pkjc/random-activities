@@ -9,11 +9,26 @@ import SendIcon from "@material-ui/icons/Send";
 import ShareIcon from "@material-ui/icons/Share";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import SubscriptionForm from "./SubscriptionForm";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import Paper from "@material-ui/core/Paper";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import { Box } from "@material-ui/core";
 
 export default function HeroContent(props) {
-  const useStyles = makeStyles(theme => ({
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const useStyles = makeStyles((theme) => ({
     heroContent: {
-      backgroundColor: theme.palette.secondary.main
+      backgroundColor: theme.palette.secondary.main,
       // border: "1px solid #ddd"
     },
     heroContentSubtitle: {
@@ -22,22 +37,27 @@ export default function HeroContent(props) {
       paddingTop: 5,
       ["@media (max-width:600px)"]: {
         // eslint-disable-line no-useless-computed-key
-        fontSize: "1.7rem"
-      }
+        fontSize: "1.7rem",
+      },
     },
     heroButtons: {
-      marginTop: theme.spacing(4)
+      marginTop: theme.spacing(4),
     },
     heroButton: {
       textTransform: "none",
-      fontSize: 20,
-      fontWeight: "normal"
+      fontSize: 24,
+      fontWeight: "normal",
     },
     pStyle: {
-      fontSize: "2rem",
+      fontSize: "1.8rem",
       marginBottom: 30,
-      textAlign: "center"
-    }
+      textAlign: "center",
+    },
+    customMenuWidth: {
+      "& div": {
+        width: "9vw",
+      },
+    },
   }));
   const classes = useStyles();
 
@@ -50,7 +70,7 @@ export default function HeroContent(props) {
           style={{
             paddingTop: "15vh",
             paddingBottom: "15vh",
-            marginBottom: "2rem"
+            marginBottom: "2rem",
           }}
         >
           {props.error ? (
@@ -99,16 +119,26 @@ export default function HeroContent(props) {
           )}
 
           <div className={classes.heroButtons}>
-            <Grid container spacing={2} justify="center">
-              <Grid item>
+            <Grid
+              container
+              lg={4}
+              md={6}
+              xs={10}
+              spacing={2}
+              justify="center"
+              align="center"
+              style={{ margin: "auto" }}
+              item
+            >
+              <Grid item xs={12}>
                 {props.error ? (
                   <Button
                     variant="contained"
+                    href="https://forms.gle/SktfRvJJB8hJ6u4FA"
                     color="primary"
                     size="large"
                     target="_blank"
                     startIcon={<SendIcon />}
-                    href=""
                     className={classes.heroButton}
                   >
                     Suggest an Activity
@@ -117,7 +147,7 @@ export default function HeroContent(props) {
                   <Button
                     variant="contained"
                     color="primary"
-                    size="large"
+                    size="medium"
                     startIcon={<ShuffleIcon />}
                     onClick={() => {
                       props.startRouletteHandler();
@@ -128,17 +158,33 @@ export default function HeroContent(props) {
                   </Button>
                 )}
               </Grid>
-              <Grid item>
+              {/* <Grid item xs={12}>
                 <Button
                   variant="outlined"
                   color="primary"
                   size="large"
                   startIcon={<ShareIcon />}
                   className={classes.heroButton}
+                  aria-controls="simple-menu"
+                  aria-haspopup="true"
+                  fullWidth
+                  onClick={handleClick}
                 >
                   Share this!
                 </Button>
-              </Grid>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                  className={classes.customMenuWidth}
+                >
+                  <MenuItem onClick={handleClose}>WhatsApp</MenuItem>
+                  <MenuItem onClick={handleClose}>Facebook</MenuItem>
+                  <MenuItem onClick={handleClose}>Twitter</MenuItem>
+                </Menu>
+              </Grid> */}
             </Grid>
           </div>
         </div>
@@ -148,9 +194,13 @@ export default function HeroContent(props) {
           About this site
         </Typography>
         <Typography variant="body1" gutterBottom className={classes.pStyle}>
-          Bored@Home helps you find something fun to do while you're being a
+          Bored@Home helps you discover fun things to do while you're being a
           good human being and staying at home.
         </Typography>
+        <Typography variant="h4" className={classes.pStyle} align="center">
+          Get updates when new features are added.
+        </Typography>
+        <SubscriptionForm />
         <Typography variant="h4" align="center" className={classes.pStyle}>
           How it works?
         </Typography>
@@ -164,7 +214,7 @@ export default function HeroContent(props) {
             style={{
               padding: "0 0 0 1em",
               marginTop: 0,
-              fontSize: "1.35rem"
+              fontSize: "1.35rem",
             }}
           >
             <li>No sign up or login required!</li>
@@ -216,11 +266,6 @@ export default function HeroContent(props) {
           acitvity suggestion can be as simple as recommending a must watch
           movie or your favorite Spotify plalist.
         </Typography> */}
-        <Typography variant="h4" gutterBottom align="center">
-          Get updates when new features are added.
-        </Typography>
-
-        <SubscriptionForm />
 
         {/* <Typography
           variant="body1"

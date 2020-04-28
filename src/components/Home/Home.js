@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "../../assets/styles";
 import Activity from "../Activity/Activity";
@@ -11,7 +11,6 @@ export default function Home(props) {
   const { savedActivities, setSavedActivities } = props;
   const [activity, setActivity] = useState({});
   const [isRouletteStarted, setIsRouletteStarted] = useState(false);
-  // const [counter, setCounter] = useState(0);
   const [activitiesData, setActivitiesData] = useState([]);
   const [noContent, setNoContent] = useState(false);
 
@@ -25,7 +24,7 @@ export default function Home(props) {
     Tabletop.init({
       key: publicSpreadsheetUrl,
       callback: processFetchedData,
-      simpleSheet: true
+      simpleSheet: true,
     });
   }
 
@@ -64,7 +63,7 @@ export default function Home(props) {
     setIsRouletteStarted(true);
   };
 
-  const dopeHandler = savedActivity => {
+  const dopeHandler = (savedActivity) => {
     if (!savedActivities.includes(JSON.stringify(savedActivity))) {
       setSavedActivities([...savedActivities, JSON.stringify(savedActivity)]);
     }
@@ -85,6 +84,7 @@ export default function Home(props) {
         justify="center"
         alignItems="baseline"
         xs={12}
+        item
       >
         {noContent && <NoMoreContent />}
 
