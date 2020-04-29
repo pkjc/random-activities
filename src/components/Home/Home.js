@@ -113,7 +113,7 @@ export default function Home(props) {
         autoHideDuration={1000}
         onClose={handleClose}
       >
-        <Alert onClose={handleClose} severity="success">
+        <Alert onClose={handleClose} severity="info">
           Activity Saved!
         </Alert>
       </Snackbar>

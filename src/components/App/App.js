@@ -156,7 +156,6 @@ export default function App() {
             >
               <BookmarksIcon className={classes.extendedIcon} />
               {savedActivitiesData && savedActivitiesData.length} Saved
-              Activities
             </Fab>
           </RouterLink>
         )}
