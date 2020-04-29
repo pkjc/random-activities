@@ -21,11 +21,19 @@ export default function HeroContent(props) {
     heroContent: {
       backgroundColor: theme.palette.secondary.main,
       // border: "1px solid #ddd"
+      paddingTop: "15vh",
+      paddingBottom: "15vh",
+      ["@media (max-width:600px)"]: {
+        // eslint-disable-line no-useless-computed-key
+        fontSize: "1.8rem",
+        paddingTop: "10vh",
+        paddingBottom: "10vh",
+      },
     },
     heroContentSubtitle: {
       fontSize: "2rem",
       fontWeight: "normal",
-      paddingTop: 5,
+      paddingTop: 10,
       ["@media (max-width:600px)"]: {
         // eslint-disable-line no-useless-computed-key
         fontSize: "1.8rem",
@@ -38,6 +46,10 @@ export default function HeroContent(props) {
       textTransform: "none",
       fontSize: 24,
       fontWeight: "normal",
+      ["@media (max-width:600px)"]: {
+        // eslint-disable-line no-useless-computed-key
+        fontSize: 20,
+      },
     },
     pStyle: {
       fontSize: "1.8rem",
@@ -47,7 +59,8 @@ export default function HeroContent(props) {
     subTitle: {
       fontSize: "2.2rem",
       fontWeight: "bold",
-      marginBottom: 20,
+      marginBottom: 0,
+      marginTop: 25,
       color: "#444",
       ["@media (max-width:600px)"]: {
         // eslint-disable-line no-useless-computed-key
@@ -68,10 +81,10 @@ export default function HeroContent(props) {
         {/* <CssBaseline /> */}
         <div
           className={classes.heroContent}
-          style={{
-            paddingTop: "15vh",
-            paddingBottom: "15vh",
-          }}
+          // style={{
+          //   paddingTop: "15vh",
+          //   paddingBottom: "15vh",
+          // }}
         >
           {props.error ? (
             <React.Fragment>

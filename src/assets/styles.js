@@ -82,7 +82,8 @@ const useStyles = makeStyles((theme) => ({
     height: "85.5%",
     display: "flex",
     ["@media (max-width:600px)"]: {
-      height: "83%",
+      height: "90%",
+      paddingBottom: "25%",
     },
   },
   appBar: {

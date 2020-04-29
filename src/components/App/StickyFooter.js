@@ -1,5 +1,4 @@
 import React from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -28,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   footerContainer: {},
   footer: {
-    padding: theme.spacing(3, 2),
+    padding: theme.spacing(2, 2),
     backgroundColor:
       theme.palette.type === "light"
         ? theme.palette.grey[200]
@@ -36,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
     position: "fixed",
     bottom: 0,
     width: "100%",
+    zIndex: "9999",
   },
 }));
 
@@ -52,11 +52,11 @@ export default function StickyFooter() {
           justify="center"
           spacing={3}
         >
-          <Grid item xs={12} md={6} style={{ padding: "6px" }}>
+          <Grid item xs={6} md={6} style={{ padding: "6px" }}>
             <Box
               component="span"
               display="flex"
-              justifyContent={{ xs: "center", md: "flex-end" }}
+              justifyContent={{ xs: "flex-end" }}
             >
               <Button
                 color="inherit"
@@ -74,11 +74,11 @@ export default function StickyFooter() {
               </Button>
             </Box>
           </Grid>
-          <Grid item xs={12} md={6} style={{ padding: "6px" }}>
+          <Grid item xs={6} md={6} style={{ padding: "6px" }}>
             <Box
               component="span"
               display="flex"
-              justifyContent={{ xs: "center", md: "flex-start" }}
+              justifyContent={{ xs: "flex-start" }}
             >
               <Copyright />
             </Box>
