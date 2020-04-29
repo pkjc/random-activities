@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "../../assets/styles";
 import Activity from "../Activity/Activity";
@@ -128,9 +128,9 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
-function isEmpty(obj) {
-  for (var key in obj) {
-    if (obj.hasOwnProperty(key)) return false;
-  }
-  return true;
-}
+// function isEmpty(obj) {
+//   for (var key in obj) {
+//     if (obj.hasOwnProperty(key)) return false;
+//   }
+//   return true;
+// }

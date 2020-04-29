@@ -3,28 +3,19 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Link from "@material-ui/core/Link";
 import ShuffleIcon from "@material-ui/icons/Shuffle";
 import SendIcon from "@material-ui/icons/Send";
-import ShareIcon from "@material-ui/icons/Share";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import SubscriptionForm from "./SubscriptionForm";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import Paper from "@material-ui/core/Paper";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import { Box } from "@material-ui/core";
 
 export default function HeroContent(props) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const [anchorEl, setAnchorEl] = React.useState(null);
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
 
   const useStyles = makeStyles((theme) => ({
     heroContent: {

@@ -11,13 +11,11 @@ import {
   Switch,
   Route,
   Link as RouterLink,
-  Redirect,
 } from "react-router-dom";
 import SavedActivities from "../../components/SavedActivities/SavedActivities";
 import Home from "../../components/Home/Home";
 import Grid from "@material-ui/core/Grid";
 import Tabletop from "tabletop";
-import Link from "@material-ui/core/Link";
 
 const API_URL =
   "https://docs.google.com/spreadsheets/d/1S2MGuA1tKHHr4MWivcLw47q0gvF4iPv_hB1n_5xcPBA/";
@@ -44,14 +42,14 @@ export default function App() {
     }
     return url;
   }
-  function redirectToSaved() {}
   function fetchDataFromServer() {
     Tabletop.init({
       key: API_URL,
       callback: (dataFromSheet, tabletop) => {
-        dataFromSheet.map((obj, ind) => {
+        dataFromSheet = dataFromSheet.map((obj, ind) => {
           obj["id"] = ind;
           obj["url"] = appendRef(obj["url"]);
+          return dataFromSheet;
         });
         setActivitiesData(dataFromSheet);
       },
