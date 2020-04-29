@@ -109,11 +109,11 @@ export default function Home(props) {
       </Grid>
       <Snackbar
         open={isSaveSuccessful}
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-        autoHideDuration={1000}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        autoHideDuration={2000}
         onClose={handleClose}
       >
-        <Alert onClose={handleClose} severity="info">
+        <Alert onClose={handleClose} severity="success">
           Activity Saved!
         </Alert>
       </Snackbar>

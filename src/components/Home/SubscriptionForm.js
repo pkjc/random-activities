@@ -23,9 +23,13 @@ const SubscriptionForm = () => {
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
-      padding: theme.spacing(1, 0, 1),
-      fontSize: 22,
+      textAlign: "center",
+      fontSize: 20,
       fontWeight: "bold",
+      borderWidth: 2,
+      "&:hover": {
+        borderWidth: 2,
+      },
     },
   }));
   const classes = useStyles();
@@ -53,9 +57,9 @@ const SubscriptionForm = () => {
       />
       <Button
         type="submit"
-        size="large"
+        size="medium"
+        variant="outlined"
         fullWidth
-        variant="contained"
         color="primary"
         className={classes.submit}
         id="mc-embedded-subscribe"

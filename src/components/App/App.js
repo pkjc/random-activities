@@ -6,6 +6,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useStyles from "../../assets/styles";
 import Fab from "@material-ui/core/Fab";
+import SendIcon from "@material-ui/icons/Send";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -89,7 +91,7 @@ export default function App() {
                 </RouterLink>
               </Grid>
               <Grid item>
-                <Button
+                {/* <Button
                   color="inherit"
                   variant="outlined"
                   className={classes.button}
@@ -103,8 +105,8 @@ export default function App() {
                   }}
                 >
                   Suggest Activity
-                </Button>
-                {/* <RouterLink to="/saved" style={{ textDecoration: "none" }}>
+                </Button> */}
+                <RouterLink to="/saved" style={{ textDecoration: "none" }}>
                   <Button
                     className={classes.button}
                     startIcon={<BookmarksIcon />}
@@ -115,7 +117,7 @@ export default function App() {
                   >
                     {savedActivitiesData && savedActivitiesData.length} Saved
                   </Button>
-                </RouterLink> */}
+                </RouterLink>
               </Grid>
             </Grid>
           </Toolbar>
@@ -139,7 +141,23 @@ export default function App() {
             />
           </Route>
         </Switch>
-        {isRouletteStarted && (
+        <Fab
+          color="inherit"
+          href="https://forms.gle/SktfRvJJB8hJ6u4FA"
+          size="medium"
+          target="_blank"
+          style={{
+            textTransform: "none",
+            fontSize: "1rem",
+            borderRadius: 5,
+          }}
+          variant="extended"
+          className={classes.fabMargin}
+        >
+          <SendIcon className={classes.extendedIcon} />
+          Suggest Activity
+        </Fab>
+        {/* {isRouletteStarted && (
           <RouterLink to="/saved">
             <Fab
               size="medium"
@@ -158,7 +176,7 @@ export default function App() {
               {savedActivitiesData && savedActivitiesData.length} Saved
             </Fab>
           </RouterLink>
-        )}
+        )} */}
       </Router>
     </div>
   );
