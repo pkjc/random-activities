@@ -127,7 +127,7 @@ export default function SavedActivities(props) {
     <React.Fragment>
       {/* <CssBaseline /> */}
       <Container className={classes.cardGrid} maxWidth="md">
-        <Grid container spacing={12}>
+        <Grid container>
           {savedActivities.length < 1 ? (
             <Typography
               variant="h4"
