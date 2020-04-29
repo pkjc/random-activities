@@ -21,7 +21,7 @@ const SubscriptionForm = () => {
       marginTop: theme.spacing(1),
     },
     submit: {
-      margin: theme.spacing(3, 0, 0),
+      margin: theme.spacing(2, 0, 0),
       textAlign: "center",
       fontSize: 20,
       fontWeight: "bold",

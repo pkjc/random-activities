@@ -57,14 +57,14 @@ export default function HeroContent(props) {
       textAlign: "center",
     },
     subTitle: {
-      fontSize: "2.2rem",
+      fontSize: "1.8rem",
       fontWeight: "bold",
       marginBottom: 0,
       marginTop: 25,
       color: "#444",
       ["@media (max-width:600px)"]: {
         // eslint-disable-line no-useless-computed-key
-        fontSize: "1.65rem",
+        fontSize: "1.6rem",
       },
     },
     customMenuWidth: {
@@ -204,9 +204,9 @@ export default function HeroContent(props) {
           </div>
         </div>
       </Grid>
-      <Grid item xs={10} lg={4} md={6}>
+      <Grid item xs={10} lg={3} md={4}>
         <Typography variant="h4" className={classes.subTitle} align="center">
-          Get Fun Things In Your Inbox
+          Get fun things to do via email
         </Typography>
         {/* <Typography variant="body1" gutterBottom className={classes.pStyle}>
           Bored@Home helps you discover fun things to do while you're being a
