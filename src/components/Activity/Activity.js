@@ -104,16 +104,16 @@ export default function Activity(props) {
             </Button>
           </ButtonGroup>
         </CardActions>
-        {/* <Typography
+        <Typography
           variant="body1"
           color="textSecondary"
           style={{
             textAlign: "center",
-            padding: "0 10% 1.5% 10%"
+            padding: "0 10% 1.5% 10%",
           }}
         >
           Click 'Save' or 'Skip' to see next.
-        </Typography> */}
+        </Typography>
       </Card>
     </Grid>
   );
