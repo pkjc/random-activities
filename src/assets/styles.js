@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 700,
     marginTop: 50,
     ["@media (max-width:600px)"]: {
-      marginTop: 50,
+      marginTop: 20,
     },
   },
   cardContent: {
@@ -82,8 +82,8 @@ const useStyles = makeStyles((theme) => ({
     height: "85.5%",
     display: "flex",
     ["@media (max-width:600px)"]: {
-      height: "90%",
-      paddingBottom: "25%",
+      height: "85%",
+      paddingBottom: "20%",
     },
   },
   appBar: {

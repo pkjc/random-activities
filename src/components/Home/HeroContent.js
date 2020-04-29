@@ -25,9 +25,9 @@ export default function HeroContent(props) {
       paddingBottom: "15vh",
       ["@media (max-width:600px)"]: {
         // eslint-disable-line no-useless-computed-key
-        fontSize: "1.8rem",
-        paddingTop: "10vh",
-        paddingBottom: "10vh",
+        fontSize: "1.7rem",
+        paddingTop: "9vh",
+        paddingBottom: "9vh",
       },
     },
     heroContentSubtitle: {
@@ -36,7 +36,7 @@ export default function HeroContent(props) {
       paddingTop: 10,
       ["@media (max-width:600px)"]: {
         // eslint-disable-line no-useless-computed-key
-        fontSize: "1.8rem",
+        fontSize: "1.75rem",
       },
     },
     heroButtons: {
@@ -97,6 +97,8 @@ export default function HeroContent(props) {
                 <img
                   alt="Bored@Home? Find fun things to do!"
                   src="https://media1.giphy.com/media/upg0i1m4DLe5q/source.gif"
+                  width="220px"
+                  height="auto"
                 />
               </Typography>
               <Typography
