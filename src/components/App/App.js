@@ -91,13 +91,14 @@ export default function App() {
               <Grid item>
                 <Button
                   color="inherit"
+                  variant="outlined"
                   className={classes.button}
                   href="https://forms.gle/SktfRvJJB8hJ6u4FA"
                   size="medium"
                   target="_blank"
                   style={{
                     textTransform: "none",
-                    marginRight: 18,
+                    marginRight: 1,
                     fontSize: "1rem",
                   }}
                 >
@@ -145,11 +146,17 @@ export default function App() {
               color="secondary"
               aria-label="add"
               className={classes.fabMargin}
-              style={{ color: "#7d4cdb", fontWeight: "bold" }}
+              style={{
+                color: "#7d4cdb",
+                fontWeight: "bold",
+                borderRadius: 5,
+                textTransform: "none",
+              }}
               variant="extended"
             >
               <BookmarksIcon className={classes.extendedIcon} />
               {savedActivitiesData && savedActivitiesData.length} Saved
+              Activities
             </Fab>
           </RouterLink>
         )}
