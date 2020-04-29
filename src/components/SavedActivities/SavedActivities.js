@@ -19,7 +19,11 @@ const useStyles = makeStyles((theme) => ({
 
   cardGrid: {
     paddingTop: theme.spacing(6),
-    paddingBottom: theme.spacing(6),
+    paddingBottom: theme.spacing(8),
+    height: "100%",
+    ["@media (max-width:600px)"]: {
+      height: "100%",
+    },
   },
   card: {
     height: "100%",

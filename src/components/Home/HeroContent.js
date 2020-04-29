@@ -71,7 +71,6 @@ export default function HeroContent(props) {
           style={{
             paddingTop: "15vh",
             paddingBottom: "15vh",
-            marginBottom: "2rem",
           }}
         >
           {props.error ? (
@@ -190,7 +189,7 @@ export default function HeroContent(props) {
           </div>
         </div>
       </Grid>
-      <Grid item xs={10} lg={4} md={6} style={{ marginBottom: "2rem" }}>
+      <Grid item xs={10} lg={4} md={6}>
         <Typography variant="h4" className={classes.subTitle} align="center">
           Get Fun Things In Your Inbox
         </Typography>

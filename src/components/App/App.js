@@ -5,9 +5,7 @@ import BookmarksIcon from "@material-ui/icons/Bookmarks";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useStyles from "../../assets/styles";
-import Fab from "@material-ui/core/Fab";
-import SendIcon from "@material-ui/icons/Send";
-
+import StickyFooter from "./StickyFooter";
 import {
   BrowserRouter as Router,
   Switch,
@@ -141,7 +139,7 @@ export default function App() {
             />
           </Route>
         </Switch>
-        <Fab
+        {/* <Fab
           color="inherit"
           href="https://forms.gle/SktfRvJJB8hJ6u4FA"
           size="medium"
@@ -156,7 +154,7 @@ export default function App() {
         >
           <SendIcon className={classes.extendedIcon} />
           Suggest Activity
-        </Fab>
+        </Fab> */}
         {/* {isRouletteStarted && (
           <RouterLink to="/saved">
             <Fab
@@ -178,6 +176,7 @@ export default function App() {
           </RouterLink>
         )} */}
       </Router>
+      <StickyFooter />
     </div>
   );
 }

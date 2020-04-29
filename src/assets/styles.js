@@ -79,8 +79,11 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
   },
   grid: {
-    height: "90%",
+    height: "85.5%",
     display: "flex",
+    ["@media (max-width:600px)"]: {
+      height: "83%",
+    },
   },
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`,

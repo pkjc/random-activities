@@ -19,10 +19,9 @@ const SubscriptionForm = () => {
     form: {
       width: "100%", // Fix IE 11 issue.
       marginTop: theme.spacing(1),
-      marginBottom: theme.spacing(4),
     },
     submit: {
-      margin: theme.spacing(3, 0, 2),
+      margin: theme.spacing(3, 0, 0),
       textAlign: "center",
       fontSize: 20,
       fontWeight: "bold",
@@ -42,7 +41,6 @@ const SubscriptionForm = () => {
       id="mc-embedded-subscribe-form"
       name="mc-embedded-subscribe-form"
       target="_blank"
-      noValidate
     >
       <TextField
         variant="outlined"
