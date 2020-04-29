@@ -2,9 +2,14 @@ import React, { useState, useEffect, useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "../../assets/styles";
 import Activity from "../Activity/Activity";
-
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 import HeroContent from "./HeroContent";
 import NoMoreContent from "./NoMoreContent";
+
+function Alert(props) {
+  return <MuiAlert elevation={1} variant="filled" {...props} />;
+}
 
 export default function Home(props) {
   //From Props
@@ -15,6 +20,7 @@ export default function Home(props) {
   //Local State
   const [activity, setActivity] = useState({});
   const [noContent, setNoContent] = useState(false);
+  const [isSaveSuccessful, setIsSaveSuccessful] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("savedActivities", JSON.stringify(savedActivities));
@@ -57,10 +63,16 @@ export default function Home(props) {
     setAlreadySelectedIds([...alreadySelectedIds, randomId]);
     setIsRouletteStarted(true);
   };
-
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setIsSaveSuccessful(false);
+  };
   const dopeHandler = (savedActivity) => {
     if (!savedActivities.includes(JSON.stringify(savedActivity))) {
       setSavedActivities([...savedActivities, JSON.stringify(savedActivity)]);
+      setIsSaveSuccessful(true);
     }
     startRoulette();
   };
@@ -95,6 +107,16 @@ export default function Home(props) {
           />
         )}
       </Grid>
+      <Snackbar
+        open={isSaveSuccessful}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        autoHideDuration={1000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity="success">
+          Activity Saved!
+        </Alert>
+      </Snackbar>
     </React.Fragment>
   );
 }

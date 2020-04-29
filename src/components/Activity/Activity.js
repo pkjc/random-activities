@@ -2,12 +2,13 @@ import React from "react";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
+import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
-
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import ThumbUpOutlined from "@material-ui/icons/ThumbUpOutlined";
+// import ThumbUpOutlined from "@material-ui/icons/ThumbUpOutlined";
+import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import ThumbDownOutlined from "@material-ui/icons/ThumbDownOutlined";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "../../assets/styles";
@@ -75,13 +76,13 @@ export default function Activity(props) {
             aria-label="outlined primary button group"
           >
             <Button
-              startIcon={<ThumbUpOutlined />}
+              startIcon={<BookmarkBorderIcon />}
               className={classes.yayBtn}
               onClick={() => {
                 props.dopeHandler(props.activity);
               }}
             >
-              Save for later
+              Save
             </Button>
             <Button
               color="primary"

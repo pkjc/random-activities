@@ -1,20 +1,24 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import ThumbUpOutlined from "@material-ui/icons/ThumbUpOutlined";
+import BookmarksIcon from "@material-ui/icons/Bookmarks";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useStyles from "../../assets/styles";
+import Fab from "@material-ui/core/Fab";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link as RouterLink,
+  Redirect,
 } from "react-router-dom";
 import SavedActivities from "../../components/SavedActivities/SavedActivities";
 import Home from "../../components/Home/Home";
 import Grid from "@material-ui/core/Grid";
 import Tabletop from "tabletop";
+import Link from "@material-ui/core/Link";
+
 const API_URL =
   "https://docs.google.com/spreadsheets/d/1S2MGuA1tKHHr4MWivcLw47q0gvF4iPv_hB1n_5xcPBA/";
 
@@ -30,10 +34,25 @@ export default function App() {
   );
   const [activitiesData, setActivitiesData] = React.useState([]);
 
+  function appendRef(url) {
+    if (url.includes("?")) {
+      url = url + "&ref=boredathome.now.sh";
+    } else if (url[url.length - 1] == "/") {
+      url = url + "?ref=boredathome.now.sh";
+    } else {
+      url = url + "/?ref=boredathome.now.sh";
+    }
+    return url;
+  }
+  function redirectToSaved() {}
   function fetchDataFromServer() {
     Tabletop.init({
       key: API_URL,
       callback: (dataFromSheet, tabletop) => {
+        dataFromSheet.map((obj, ind) => {
+          obj["id"] = ind;
+          obj["url"] = appendRef(obj["url"]);
+        });
         setActivitiesData(dataFromSheet);
       },
       simpleSheet: true,
@@ -87,10 +106,10 @@ export default function App() {
                 >
                   Suggest Activity
                 </Button>
-                <RouterLink to="/saved" style={{ textDecoration: "none" }}>
+                {/* <RouterLink to="/saved" style={{ textDecoration: "none" }}>
                   <Button
                     className={classes.button}
-                    startIcon={<ThumbUpOutlined />}
+                    startIcon={<BookmarksIcon />}
                     style={{ color: "#7d4cdb" }}
                     size="medium"
                     color="secondary"
@@ -98,7 +117,7 @@ export default function App() {
                   >
                     {savedActivitiesData && savedActivitiesData.length} Saved
                   </Button>
-                </RouterLink>
+                </RouterLink> */}
               </Grid>
             </Grid>
           </Toolbar>
@@ -122,6 +141,21 @@ export default function App() {
             />
           </Route>
         </Switch>
+        {isRouletteStarted && (
+          <RouterLink to="/saved">
+            <Fab
+              size="medium"
+              color="secondary"
+              aria-label="add"
+              className={classes.fabMargin}
+              style={{ color: "#7d4cdb", fontWeight: "bold" }}
+              variant="extended"
+            >
+              <BookmarksIcon className={classes.extendedIcon} />
+              {savedActivitiesData && savedActivitiesData.length} Saved
+            </Fab>
+          </RouterLink>
+        )}
       </Router>
     </div>
   );
