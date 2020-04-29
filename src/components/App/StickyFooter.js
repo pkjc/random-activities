@@ -13,8 +13,8 @@ function Copyright() {
       <Link color="inherit" href="https://pankaj.co/">
         Pankaj
       </Link>
-      {/* {" "}
-      {new Date().getFullYear()}
+      {/* {" / "}
+      Stay home, Stay safe!
       {"."} */}
     </Typography>
   );

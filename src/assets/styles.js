@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
   cardContentTitle: {
     fontWeight: "bold",
     marginTop: 5,
+    fontSize: "1.65rem",
   },
   cardHeader: {
     paddingTop: "12px !important",

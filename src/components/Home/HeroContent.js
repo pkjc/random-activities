@@ -79,13 +79,7 @@ export default function HeroContent(props) {
     <React.Fragment>
       <Grid item xs={12}>
         {/* <CssBaseline /> */}
-        <div
-          className={classes.heroContent}
-          // style={{
-          //   paddingTop: "15vh",
-          //   paddingBottom: "15vh",
-          // }}
-        >
+        <div className={classes.heroContent}>
           {props.error ? (
             <React.Fragment>
               <Typography
@@ -97,7 +91,7 @@ export default function HeroContent(props) {
                 <img
                   alt="Bored@Home? Find fun things to do!"
                   src="https://media1.giphy.com/media/upg0i1m4DLe5q/source.gif"
-                  width="220px"
+                  width="200px"
                   height="auto"
                 />
               </Typography>
@@ -107,9 +101,7 @@ export default function HeroContent(props) {
                 color="textSecondary"
                 className={classes.heroContentSubtitle}
               >
-                Now go take a nap while we gather more activities for you.
-                <br />
-                You can suggest activities too!
+                We're out of activities:( Maybe you can suggest some?
               </Typography>
             </React.Fragment>
           ) : (
@@ -151,7 +143,7 @@ export default function HeroContent(props) {
                     variant="contained"
                     href="https://forms.gle/SktfRvJJB8hJ6u4FA"
                     color="primary"
-                    size="large"
+                    size="medium"
                     target="_blank"
                     startIcon={<SendIcon />}
                     className={classes.heroButton}
