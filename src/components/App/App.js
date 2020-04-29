@@ -46,10 +46,9 @@ export default function App() {
     Tabletop.init({
       key: API_URL,
       callback: (dataFromSheet, tabletop) => {
-        dataFromSheet = dataFromSheet.map((obj, ind) => {
+        dataFromSheet.map((obj, ind) => {
           obj["id"] = ind;
           obj["url"] = appendRef(obj["url"]);
-          return dataFromSheet;
         });
         setActivitiesData(dataFromSheet);
       },
