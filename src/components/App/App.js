@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import ThumbUpOutlined from "@material-ui/icons/ThumbUpOutlined";
@@ -14,17 +14,35 @@ import {
 import SavedActivities from "../../components/SavedActivities/SavedActivities";
 import Home from "../../components/Home/Home";
 import Grid from "@material-ui/core/Grid";
+import Tabletop from "tabletop";
+const API_URL =
+  "https://docs.google.com/spreadsheets/d/1S2MGuA1tKHHr4MWivcLw47q0gvF4iPv_hB1n_5xcPBA/";
 
 export default function App() {
   const classes = useStyles();
 
+  const [isRouletteStarted, setIsRouletteStarted] = useState(false);
   const [savedActivitiesData, setSavedActivitiesData] = React.useState(
     JSON.parse(localStorage.getItem("savedActivities")) || []
   );
-
   const [pickedActivitiesData, setPickedActivitiesData] = React.useState(
     JSON.parse(localStorage.getItem("pickedActivities")) || []
   );
+  const [activitiesData, setActivitiesData] = React.useState([]);
+
+  function fetchDataFromServer() {
+    Tabletop.init({
+      key: API_URL,
+      callback: (dataFromSheet, tabletop) => {
+        setActivitiesData(dataFromSheet);
+      },
+      simpleSheet: true,
+    });
+  }
+
+  useEffect(() => {
+    fetchDataFromServer();
+  }, []);
 
   return (
     <div className={classes.root}>
@@ -92,6 +110,9 @@ export default function App() {
               setSavedActivities={setSavedActivitiesData}
               alreadySelectedIds={pickedActivitiesData}
               setAlreadySelectedIds={setPickedActivitiesData}
+              isRouletteStarted={isRouletteStarted}
+              setIsRouletteStarted={setIsRouletteStarted}
+              activitiesData={activitiesData}
             />
           </Route>
           <Route path="/saved">

@@ -2,35 +2,19 @@ import React, { useState, useEffect, useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "../../assets/styles";
 import Activity from "../Activity/Activity";
-import Tabletop from "tabletop";
+
 import HeroContent from "./HeroContent";
 import NoMoreContent from "./NoMoreContent";
 
 export default function Home(props) {
+  //From Props
   const { alreadySelectedIds, setAlreadySelectedIds } = props;
   const { savedActivities, setSavedActivities } = props;
+  const { isRouletteStarted, setIsRouletteStarted } = props;
+  const { activitiesData } = props;
+  //Local State
   const [activity, setActivity] = useState({});
-  const [isRouletteStarted, setIsRouletteStarted] = useState(false);
-  const [activitiesData, setActivitiesData] = useState([]);
   const [noContent, setNoContent] = useState(false);
-
-  function processFetchedData(dataFromSheet, tabletop) {
-    setActivitiesData(dataFromSheet);
-  }
-
-  function init() {
-    const publicSpreadsheetUrl =
-      "https://docs.google.com/spreadsheets/d/1S2MGuA1tKHHr4MWivcLw47q0gvF4iPv_hB1n_5xcPBA/";
-    Tabletop.init({
-      key: publicSpreadsheetUrl,
-      callback: processFetchedData,
-      simpleSheet: true,
-    });
-  }
-
-  useEffect(() => {
-    init();
-  }, []);
 
   useEffect(() => {
     localStorage.setItem("savedActivities", JSON.stringify(savedActivities));
@@ -43,12 +27,23 @@ export default function Home(props) {
     );
   }, [alreadySelectedIds]);
 
+  useEffect(() => {
+    if (isRouletteStarted) {
+      startRoulette();
+    }
+  }, []);
   const startRoulette = () => {
-    console.log("selecting random activity.");
-    if (alreadySelectedIds.length >= activitiesData.length) {
+    if (
+      alreadySelectedIds &&
+      alreadySelectedIds.length >= activitiesData.length
+    ) {
       setNoContent(true);
       return;
     }
+    // if (alreadySelectedIds && alreadySelectedIds.length > 0) {
+    //   setActivity(activitiesData[alreadySelectedIds.length - 1]);
+    //   return;
+    // }
     let randomId = getRandomInt(0, activitiesData.length);
     while (alreadySelectedIds.includes(randomId)) {
       if (alreadySelectedIds.length >= activitiesData.length) {
@@ -99,9 +94,6 @@ export default function Home(props) {
             nopeHandler={nopeHandler}
           />
         )}
-        {/* <Grid item>
-          <StickyFooter />
-        </Grid> */}
       </Grid>
     </React.Fragment>
   );

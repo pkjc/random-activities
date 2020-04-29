@@ -76,7 +76,7 @@ theme.typography.h5 = {
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <AppContextProvider value={appCtx}>
-      {localStorage.clear()}
+      {/* {localStorage.clear()} */}
       <App />
     </AppContextProvider>
   </ThemeProvider>,

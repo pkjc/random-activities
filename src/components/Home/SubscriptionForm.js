@@ -23,6 +23,9 @@ const SubscriptionForm = () => {
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
+      padding: theme.spacing(1, 0, 1),
+      fontSize: 22,
+      fontWeight: "bold",
     },
   }));
   const classes = useStyles();
@@ -46,7 +49,7 @@ const SubscriptionForm = () => {
         label="Email Address"
         name="EMAIL"
         autoComplete="email"
-        style={{ marginBottom: 0 }}
+        style={{ marginBottom: 0, background: "#fff" }}
       />
       <Button
         type="submit"
@@ -57,7 +60,7 @@ const SubscriptionForm = () => {
         className={classes.submit}
         id="mc-embedded-subscribe"
       >
-        Sign In
+        YES PLEASE!
       </Button>
     </form>
   );

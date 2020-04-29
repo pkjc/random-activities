@@ -37,7 +37,7 @@ export default function HeroContent(props) {
       paddingTop: 5,
       ["@media (max-width:600px)"]: {
         // eslint-disable-line no-useless-computed-key
-        fontSize: "1.7rem",
+        fontSize: "1.8rem",
       },
     },
     heroButtons: {
@@ -53,6 +53,16 @@ export default function HeroContent(props) {
       marginBottom: 30,
       textAlign: "center",
     },
+    subTitle: {
+      fontSize: "2.2rem",
+      fontWeight: "bold",
+      marginBottom: 20,
+      color: "#444",
+      ["@media (max-width:600px)"]: {
+        // eslint-disable-line no-useless-computed-key
+        fontSize: "1.65rem",
+      },
+    },
     customMenuWidth: {
       "& div": {
         width: "9vw",
@@ -64,7 +74,7 @@ export default function HeroContent(props) {
   return (
     <React.Fragment>
       <Grid item xs={12}>
-        <CssBaseline />
+        {/* <CssBaseline /> */}
         <div
           className={classes.heroContent}
           style={{
@@ -190,18 +200,18 @@ export default function HeroContent(props) {
         </div>
       </Grid>
       <Grid item xs={10} lg={4} md={6} style={{ marginBottom: "2rem" }}>
-        <Typography variant="h2" align="center">
-          About this site
+        <Typography variant="h4" className={classes.subTitle} align="center">
+          Get Fun Things In Your Inbox
         </Typography>
-        <Typography variant="body1" gutterBottom className={classes.pStyle}>
+        {/* <Typography variant="body1" gutterBottom className={classes.pStyle}>
           Bored@Home helps you discover fun things to do while you're being a
           good human being and staying at home.
         </Typography>
         <Typography variant="h4" className={classes.pStyle} align="center">
           Get updates when new features are added.
-        </Typography>
+        </Typography> */}
         <SubscriptionForm />
-        <Typography variant="h4" align="center" className={classes.pStyle}>
+        {/* <Typography variant="h4" align="center" className={classes.pStyle}>
           How it works?
         </Typography>
         <Typography
@@ -236,8 +246,8 @@ export default function HeroContent(props) {
               Activities can be as simple as a movie recommendation or your
               favorite Spotify plalist!
             </li>
-          </ol>
-        </Typography>
+          </ol> 
+        </Typography>*/}
         {/* <Typography
           variant="body1"
           gutterBottom
