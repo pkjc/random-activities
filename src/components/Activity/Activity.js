@@ -112,7 +112,7 @@ export default function Activity(props) {
             padding: "0 10% 1.5% 10%",
           }}
         >
-          Click 'Save' or 'Skip' to see next.
+          Click 'Save' or 'Skip' to see next activity
         </Typography>
       </Card>
     </Grid>

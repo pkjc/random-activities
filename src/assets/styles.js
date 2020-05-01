@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 14,
     paddingTop: 22,
   },
-  cardContentPara: {},
+  cardContentPara: { fontSize: "1rem" },
   media: {
     height: 380,
     // eslint-disable-line no-useless-computed-key
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   cardContentTitle: {
     fontWeight: "bold",
     marginTop: 5,
-    fontSize: "1.65rem",
+    fontSize: "1.5rem",
   },
   cardHeader: {
     paddingTop: "12px !important",
@@ -82,6 +82,7 @@ const useStyles = makeStyles((theme) => ({
   grid: {
     height: "85.5%",
     display: "flex",
+    paddingBottom: "5%",
     ["@media (max-width:600px)"]: {
       height: "88%",
       paddingBottom: "20%",
