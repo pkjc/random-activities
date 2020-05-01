@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   buttonGroup: {
     paddingLeft: 10,
     paddingRight: 10,
-    paddingBottom: 5,
+    paddingBottom: 0,
   },
   yayBtn: {
     color: "#609860",

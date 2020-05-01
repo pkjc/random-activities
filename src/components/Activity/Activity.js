@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 // import ThumbUpOutlined from "@material-ui/icons/ThumbUpOutlined";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
-import ThumbDownOutlined from "@material-ui/icons/ThumbDownOutlined";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "../../assets/styles";
 import Link from "@material-ui/core/Link";
@@ -93,14 +93,14 @@ export default function Activity(props) {
               {props.activity.category}
             </Button>
             <Button
-              startIcon={<ThumbDownOutlined />}
+              endIcon={<ArrowForwardIcon />}
               disableRipple
               className={classes.nayBtn}
               onClick={() => {
                 props.nopeHandler();
               }}
             >
-              Skip
+              Next
             </Button>
           </ButtonGroup>
         </CardActions>
@@ -112,7 +112,7 @@ export default function Activity(props) {
             padding: "0 10% 1.5% 10%",
           }}
         >
-          Click 'Save' or 'Skip' to see next activity
+          Click 'Save' or 'Next' to see next activity
         </Typography>
       </Card>
     </Grid>

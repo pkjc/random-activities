@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   cardGrid: {
-    paddingTop: theme.spacing(6),
+    paddingTop: theme.spacing(5),
     paddingBottom: theme.spacing(8),
     height: "100%",
     ["@media (max-width:600px)"]: {
@@ -114,7 +114,7 @@ export default function SavedActivities(props) {
   const renderSavedActivity = (savedActivity) => {
     savedActivity = JSON.parse(savedActivity);
     return (
-      <Grid item key={savedActivity.id} xs={12} sm={6} md={6}>
+      <Grid item key={savedActivity.id} xs={12} md={6} lg={4}>
         <SavedActivity
           savedActivity={savedActivity}
           removeSavedActivity={removeSavedActivity}
@@ -126,8 +126,14 @@ export default function SavedActivities(props) {
   return (
     <React.Fragment>
       {/* <CssBaseline /> */}
-      <Container className={classes.cardGrid} maxWidth="md">
-        <Grid container>
+      <Grid
+        container
+        className={classes.cardGrid}
+        justify="flex-start"
+        alignItems="center"
+        direction="column"
+      >
+        <Grid item>
           {savedActivities.length < 1 ? (
             <Typography
               variant="h4"
@@ -136,7 +142,10 @@ export default function SavedActivities(props) {
               color="textSecondary"
               component="p"
             >
-              No Saved Activities. <RouterLink to="/">Go save some!</RouterLink>
+              No Saved Activities.{" "}
+              <RouterLink style={{ textAlign: "center" }} to="/">
+                Go save some!
+              </RouterLink>
             </Typography>
           ) : (
             <Typography
@@ -146,19 +155,24 @@ export default function SavedActivities(props) {
               color="textSecondary"
               component="p"
             >
-              <RouterLink to="/">{"\u2190"} Back</RouterLink>
+              <RouterLink
+                style={{ textDecoration: "none", textAlign: "center" }}
+                to="/"
+              >
+                {"\u2190"} Back
+              </RouterLink>
             </Typography>
           )}
         </Grid>
         <br />
-        <Grid container spacing={4}>
+        <Grid container item xs={10} md={8} spacing={3}>
           {savedActivities &&
             savedActivities.length > 0 &&
             savedActivities.map((savedActivity) =>
               renderSavedActivity(savedActivity)
             )}
         </Grid>
-      </Container>
+      </Grid>
     </React.Fragment>
   );
 }
