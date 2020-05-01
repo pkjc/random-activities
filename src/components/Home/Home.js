@@ -89,7 +89,7 @@ export default function Home(props) {
         className={classes.grid}
         direction="row"
         justify="center"
-        alignItems="baseline"
+        alignItems="flex-start"
         xs={12}
         item
       >

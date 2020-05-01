@@ -61,7 +61,11 @@ function SavedActivity(props) {
             gutterBottom
             variant="h6"
             component="h2"
-            style={{ lineHeight: 1.25, fontSize: "1.5rem", fontWeight: "bold" }}
+            style={{
+              lineHeight: 1.25,
+              fontSize: "1.35rem",
+              fontWeight: "bold",
+            }}
           >
             {savedActivity.title}
           </Typography>
