@@ -61,11 +61,10 @@ export default function StickyFooter() {
               <Button
                 color="inherit"
                 href="https://forms.gle/SktfRvJJB8hJ6u4FA"
-                size="medium"
+                size="small"
                 target="_blank"
                 style={{
                   textTransform: "none",
-                  fontSize: "1rem",
                   borderRadius: 5,
                 }}
                 variant="outlined"

@@ -80,9 +80,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
   },
   grid: {
-    height: "85.5%",
+    height: "93.5%",
     display: "flex",
-    paddingBottom: "5%",
+    paddingBottom: "8%",
     ["@media (max-width:600px)"]: {
       height: "88%",
       paddingBottom: "20%",
