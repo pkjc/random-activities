@@ -21,8 +21,8 @@ export default function HeroContent(props) {
     heroContent: {
       backgroundColor: theme.palette.secondary.main,
       // border: "1px solid #ddd"
-      paddingTop: "15vh",
-      paddingBottom: "15vh",
+      paddingTop: "12vh",
+      paddingBottom: "12vh",
       ["@media (max-width:600px)"]: {
         // eslint-disable-line no-useless-computed-key
         fontSize: "1.7rem",
