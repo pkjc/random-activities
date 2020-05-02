@@ -169,7 +169,7 @@ export default function SavedActivities(props) {
           )}
         </Grid>
         <br />
-        <Grid container item xs={10} md={8} spacing={3}>
+        <Grid container item xs={11} md={8} spacing={3}>
           {savedActivities &&
             savedActivities.length > 0 &&
             savedActivities.map((savedActivity) =>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
@@ -13,9 +13,22 @@ import Grid from "@material-ui/core/Grid";
 import useStyles from "../../assets/styles";
 import Link from "@material-ui/core/Link";
 import CallMadeIcon from "@material-ui/icons/CallMade";
+import loading from '../../assets/images/loading.gif';
 
 export default function Activity(props) {
   const classes = useStyles();
+  const [isImgLoaded, setIsImgLoaded] = useState(false);
+  
+  const handleImageLoaded = () => {
+    console.log("handle ", isImgLoaded);
+    setIsImgLoaded(true);
+  }
+  useEffect(() => {
+    setIsImgLoaded(false);
+  }, [props.activity.image]);
+
+  const imageStyle = !isImgLoaded ? { display: "none" } : {};
+
   return (
     <Grid
       item
@@ -36,12 +49,22 @@ export default function Activity(props) {
           }
         />
         <Divider /> */}
+        {props.activity.image && !isImgLoaded && ( 
+          <CardMedia
+            component="img"
+            className={classes.media}
+            src={loading}
+            title={props.activity.title}
+          />)}
         {props.activity.image && (
           <CardMedia
+            key={props.activity.image}
             component={props.activity.mediaType === "video" ? "iframe" : "img"}
             className={classes.media}
             src={props.activity.image}
+            onLoad={handleImageLoaded}
             title={props.activity.title}
+            style={imageStyle}
           />
         )}
         <CardContent className={classes.cardContent}>
@@ -90,7 +113,7 @@ export default function Activity(props) {
               href={props.activity.url}
               target="_blank"
             >
-              {props.activity.category}
+              {props.activity.category ? props.activity.category : ""}
             </Button>
             <Button
               endIcon={<ArrowForwardIcon />}
