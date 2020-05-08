@@ -51,7 +51,10 @@ export default function Home(props) {
     //   return;
     // }
     let randomId = getRandomInt(0, activitiesData.length);
-    while (alreadySelectedIds.includes(randomId)) {
+    while (
+      alreadySelectedIds.includes(randomId) &&
+      activitiesData[randomId]["isRepeatable"] != 1
+    ) {
       if (alreadySelectedIds.length >= activitiesData.length) {
         console.log("no more activities");
         setNoContent(true);

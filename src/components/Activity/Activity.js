@@ -20,7 +20,6 @@ export default function Activity(props) {
   const [isImgLoaded, setIsImgLoaded] = useState(false);
 
   const handleImageLoaded = () => {
-    console.log("handle ", isImgLoaded);
     setIsImgLoaded(true);
   };
   useEffect(() => {
