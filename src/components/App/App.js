@@ -35,10 +35,12 @@ export default function App() {
   function appendRef(url) {
     if (url.includes("?")) {
       url = url + "&ref=boredathome.now.sh";
-    } else if (url[url.length - 1] == "/") {
+    }
+    // else if (url[url.length - 1] == "/") {
+    //   url = url + "?ref=boredathome.now.sh";
+    // }
+    else {
       url = url + "?ref=boredathome.now.sh";
-    } else {
-      url = url + "/?ref=boredathome.now.sh";
     }
     return url;
   }
