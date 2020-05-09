@@ -196,7 +196,7 @@ export default function HeroContent(props) {
           </div>
         </div>
       </Grid>
-      <Grid item xs={10} lg={3} md={4}>
+      <Grid item xs={10} lg={4} md={4}>
         <Typography variant="h4" className={classes.subTitle} align="center">
           Get fun things to do via email
         </Typography>

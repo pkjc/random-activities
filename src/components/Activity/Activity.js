@@ -14,6 +14,8 @@ import useStyles from "../../assets/styles";
 import Link from "@material-ui/core/Link";
 import CallMadeIcon from "@material-ui/icons/CallMade";
 import loading from "../../assets/images/loading.gif";
+import SubscriptionForm from "../Home/SubscriptionForm";
+import { Divider } from "@material-ui/core";
 
 export default function Activity(props) {
   const classes = useStyles();
@@ -30,105 +32,113 @@ export default function Activity(props) {
 
   return (
     <Grid
-      item
       container
-      md={11}
-      xs={11}
-      lg={11}
       alignItems="center"
       justify="center"
+      direction="column"
+      spacing={8}
     >
-      <Card className={classes.card}>
-        {props.activity.image && !isImgLoaded && (
-          <CardMedia
-            component="img"
-            className={classes.media}
-            src={loading}
-            title={props.activity.title}
-          />
-        )}
-        {props.activity.image && (
-          <CardMedia
-            key={props.activity.image}
-            component={props.activity.mediaType === "video" ? "iframe" : "img"}
-            className={classes.media}
-            src={props.activity.image}
-            onLoad={handleImageLoaded}
-            title={props.activity.title}
-            style={imageStyle}
-          />
-        )}
-        <CardContent className={classes.cardContent}>
-          {/* <Typography className={classes.cardHeaderTitle}>
+      <Grid item xs={11}>
+        <Card className={classes.card}>
+          {props.activity.image && !isImgLoaded && (
+            <CardMedia
+              component="img"
+              className={classes.media}
+              src={loading}
+              title={props.activity.title}
+            />
+          )}
+          {props.activity.image && (
+            <CardMedia
+              key={props.activity.image}
+              component={
+                props.activity.mediaType === "video" ? "iframe" : "img"
+              }
+              className={classes.media}
+              src={props.activity.image}
+              onLoad={handleImageLoaded}
+              title={props.activity.title}
+              style={imageStyle}
+            />
+          )}
+          <CardContent className={classes.cardContent}>
+            {/* <Typography className={classes.cardHeaderTitle}>
             {props.activity.category}
           </Typography> */}
-          <Link href={props.activity.url}>
+            <Link href={props.activity.url}>
+              <Typography
+                className={classes.cardContentTitle}
+                gutterBottom
+                variant="h4"
+                component="h1"
+              >
+                {props.activity.title}
+              </Typography>
+            </Link>
             <Typography
-              className={classes.cardContentTitle}
-              gutterBottom
-              variant="h4"
-              component="h1"
+              variant="h5"
+              className={classes.cardContentPara}
+              color="textSecondary"
+              component="p"
             >
-              {props.activity.title}
+              {props.activity.description}
             </Typography>
-          </Link>
+          </CardContent>
+          <CardActions>
+            <ButtonGroup
+              className={classes.buttonGroup}
+              fullWidth
+              size="medium"
+              aria-label="outlined primary button group"
+            >
+              <Button
+                startIcon={<BookmarkBorderIcon />}
+                className={classes.yayBtn}
+                onClick={() => {
+                  props.dopeHandler(props.activity);
+                }}
+              >
+                Save
+              </Button>
+              <Button
+                color="primary"
+                startIcon={<CallMadeIcon />}
+                className={classes.visitBtn}
+                href={props.activity.url}
+                target="_blank"
+              >
+                {props.activity.category ? props.activity.category : ""}
+              </Button>
+              <Button
+                endIcon={<ArrowForwardIcon />}
+                disableRipple
+                className={classes.nayBtn}
+                onClick={() => {
+                  props.nopeHandler();
+                }}
+              >
+                Next
+              </Button>
+            </ButtonGroup>
+          </CardActions>
           <Typography
-            variant="h5"
-            className={classes.cardContentPara}
+            variant="body1"
             color="textSecondary"
-            component="p"
+            style={{
+              textAlign: "center",
+              padding: "0 10% 1.5% 10%",
+            }}
           >
-            {props.activity.description}
+            Click 'Save' or 'Next' to see next activity
           </Typography>
-        </CardContent>
-        <CardActions>
-          <ButtonGroup
-            className={classes.buttonGroup}
-            fullWidth
-            size="medium"
-            aria-label="outlined primary button group"
-          >
-            <Button
-              startIcon={<BookmarkBorderIcon />}
-              className={classes.yayBtn}
-              onClick={() => {
-                props.dopeHandler(props.activity);
-              }}
-            >
-              Save
-            </Button>
-            <Button
-              color="primary"
-              startIcon={<CallMadeIcon />}
-              className={classes.visitBtn}
-              href={props.activity.url}
-              target="_blank"
-            >
-              {props.activity.category ? props.activity.category : ""}
-            </Button>
-            <Button
-              endIcon={<ArrowForwardIcon />}
-              disableRipple
-              className={classes.nayBtn}
-              onClick={() => {
-                props.nopeHandler();
-              }}
-            >
-              Next
-            </Button>
-          </ButtonGroup>
-        </CardActions>
-        <Typography
-          variant="body1"
-          color="textSecondary"
-          style={{
-            textAlign: "center",
-            padding: "0 10% 1.5% 10%",
-          }}
-        >
-          Click 'Save' or 'Next' to see next activity
+        </Card>
+      </Grid>
+      <Grid item xs={11} className={classes.activitySubscriptionForm}>
+        <Typography variant="h4" className={classes.subscriptionTitle}>
+          Get fun things to do via email
         </Typography>
-      </Card>
+        <SubscriptionForm />
+      </Grid>
     </Grid>
   );
 }

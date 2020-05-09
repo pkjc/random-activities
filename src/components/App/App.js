@@ -73,7 +73,7 @@ export default function App() {
         >
           <Toolbar>
             <Grid
-              justify="space-between" // Add it here :)
+              justify="space-between"
               alignItems="center"
               container
               spacing={0}

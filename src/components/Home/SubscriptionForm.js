@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
-
+import Grid from "@material-ui/core/Grid";
 // a basic form
 const SubscriptionForm = () => {
   const useStyles = makeStyles((theme) => ({
@@ -19,15 +19,29 @@ const SubscriptionForm = () => {
     form: {
       width: "100%", // Fix IE 11 issue.
       marginTop: theme.spacing(1),
+      // display: "flex",
+      // flexDirection: "row",
+      // justifyContent: "space-between",
+      // alignItems: "center",
+      // ["@media (max-width:600px)"]: {
+      //   // eslint-disable-line no-useless-computed-key
+      //   flexDirection: "column",
+      // },
     },
     submit: {
-      margin: theme.spacing(2, 0, 0),
       textAlign: "center",
       fontSize: 20,
+      marginTop: theme.spacing(1),
       fontWeight: "bold",
+      paddingTop: ".4rem",
+      paddingBottom: ".4rem",
       borderWidth: 2,
       "&:hover": {
         borderWidth: 2,
+      },
+      ["@media (max-width:600px)"]: {
+        // eslint-disable-line no-useless-computed-key
+        marginTop: 0,
       },
     },
   }));
@@ -42,28 +56,34 @@ const SubscriptionForm = () => {
       name="mc-embedded-subscribe-form"
       target="_blank"
     >
-      <TextField
-        variant="outlined"
-        margin="normal"
-        required
-        fullWidth
-        id="mce-EMAIL"
-        label="Email Address"
-        name="EMAIL"
-        autoComplete="email"
-        style={{ marginBottom: 0, background: "#fff" }}
-      />
-      <Button
-        type="submit"
-        size="medium"
-        variant="outlined"
-        fullWidth
-        color="primary"
-        className={classes.submit}
-        id="mc-embedded-subscribe"
-      >
-        YES PLEASE!
-      </Button>
+      <Grid container justify="space-between" alignItems="center" spacing={2}>
+        <Grid item xs={12} md={8}>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            id="mce-EMAIL"
+            label="Email Address"
+            name="EMAIL"
+            autoComplete="email"
+            fullWidth
+            style={{ background: "#fff" }}
+          />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Button
+            type="submit"
+            size="medium"
+            variant="outlined"
+            color="primary"
+            className={classes.submit}
+            id="mc-embedded-subscribe"
+            fullWidth
+          >
+            YES PLEASE!
+          </Button>
+        </Grid>
+      </Grid>
     </form>
   );
 };

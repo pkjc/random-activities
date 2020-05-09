@@ -107,6 +107,18 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.35em",
     verticalAlign: "middle",
   },
+  subscriptionTitle: {
+    fontSize: "1.5rem",
+    textAlign: "center",
+    color: "#777",
+    fontWeight: "normal",
+    lineHeight: "1.6",
+  },
+  activitySubscriptionForm: {
+    ["@media (min-width:600px)"]: {
+      width: "700px",
+    },
+  },
 }));
 
 export default useStyles;
