@@ -35,7 +35,7 @@ export default function Activity(props) {
       alignItems="center"
       justify="center"
       direction="column"
-      spacing={8}
+      spacing={0}
     >
       <Grid item xs={11}>
         <Card className={classes.card}>
@@ -134,9 +134,9 @@ export default function Activity(props) {
       </Grid>
       <Grid
         item
-        xs={11}
+        xs={10}
         className={classes.activitySubscriptionForm}
-        style={{ paddingTop: 10, paddingBottom: 10 }}
+        style={{ padding: 15, marginTop: 24 }}
       >
         <Typography variant="h4" className={classes.subscriptionTitle}>
           Get fun things to do via email
