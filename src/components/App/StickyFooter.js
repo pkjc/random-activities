@@ -24,15 +24,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
+    borderTop: "1px solid #ccc",
   },
   footerContainer: {},
   footer: {
-    padding: theme.spacing(2, 2),
-    backgroundColor:
-      theme.palette.type === "light"
-        ? theme.palette.grey[200]
-        : theme.palette.grey[800],
-    position: "fixed",
+    padding: theme.spacing(2, 0),
+    backgroundColor: "#eee",
+    position: "static",
     bottom: 0,
     width: "100%",
     zIndex: "9999",
@@ -45,14 +43,8 @@ export default function StickyFooter() {
   return (
     <div className={classes.root}>
       <footer className={classes.footer}>
-        <Grid
-          container
-          direction="row"
-          alignItems="center"
-          justify="center"
-          spacing={3}
-        >
-          <Grid item xs={6} md={6} style={{ padding: "6px" }}>
+        <Grid container direction="row" alignItems="center" justify="center">
+          <Grid item xs={6} md={6} style={{ paddingRight: "6px" }}>
             <Box
               component="span"
               display="flex"
@@ -73,7 +65,7 @@ export default function StickyFooter() {
               </Button>
             </Box>
           </Grid>
-          <Grid item xs={6} md={6} style={{ padding: "6px" }}>
+          <Grid item xs={6} md={6} style={{ paddingLeft: "6px" }}>
             <Box
               component="span"
               display="flex"

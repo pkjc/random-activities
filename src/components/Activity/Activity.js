@@ -14,8 +14,7 @@ import useStyles from "../../assets/styles";
 import Link from "@material-ui/core/Link";
 import CallMadeIcon from "@material-ui/icons/CallMade";
 import loading from "../../assets/images/loading.gif";
-import SubscriptionForm from "../Home/SubscriptionForm";
-import { Divider } from "@material-ui/core";
+import SubscriptionFormActivity from "../SubscriptionForm/SubscriptionFormActivity";
 
 export default function Activity(props) {
   const classes = useStyles();
@@ -133,11 +132,16 @@ export default function Activity(props) {
           </Typography>
         </Card>
       </Grid>
-      <Grid item xs={11} className={classes.activitySubscriptionForm}>
+      <Grid
+        item
+        xs={11}
+        className={classes.activitySubscriptionForm}
+        style={{ paddingTop: 10, paddingBottom: 10 }}
+      >
         <Typography variant="h4" className={classes.subscriptionTitle}>
           Get fun things to do via email
         </Typography>
-        <SubscriptionForm />
+        <SubscriptionFormActivity />
       </Grid>
     </Grid>
   );

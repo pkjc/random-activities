@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import ShuffleIcon from "@material-ui/icons/Shuffle";
 import SendIcon from "@material-ui/icons/Send";
-import SubscriptionForm from "./SubscriptionForm";
+import SubscriptionForm from "../SubscriptionForm/SubscriptionForm";
 
 export default function HeroContent(props) {
   // const [anchorEl, setAnchorEl] = React.useState(null);

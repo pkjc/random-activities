@@ -5,9 +5,9 @@ const useStyles = makeStyles((theme) => ({
   card: {
     padding: 0,
     maxWidth: 700,
-    marginTop: 45,
+    marginTop: 35,
     ["@media (max-width:600px)"]: {
-      marginTop: 22,
+      marginTop: 20,
     },
   },
   cardContent: {
@@ -80,12 +80,12 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
   },
   grid: {
-    height: "93.5%",
+    height: "87%",
     display: "flex",
-    paddingBottom: "8%",
+    paddingBottom: "5%",
     ["@media (max-width:600px)"]: {
       height: "88%",
-      paddingBottom: "20%",
+      paddingBottom: "15%",
     },
   },
   appBar: {
@@ -108,15 +108,16 @@ const useStyles = makeStyles((theme) => ({
     verticalAlign: "middle",
   },
   subscriptionTitle: {
-    fontSize: "1.5rem",
+    fontSize: "1.4rem",
     textAlign: "center",
     color: "#777",
-    fontWeight: "normal",
-    lineHeight: "1.6",
+    lineHeight: "1",
+    marginTop: 10,
   },
   activitySubscriptionForm: {
+    border: "1px solid #ccc",
     ["@media (min-width:600px)"]: {
-      width: "700px",
+      width: "600px",
     },
   },
 }));
