@@ -25,8 +25,8 @@ const SubscriptionForm = () => {
       fontSize: 20,
       marginTop: theme.spacing(1),
       fontWeight: "bold",
-      paddingTop: ".4rem",
-      paddingBottom: ".4rem",
+      paddingTop: ".53rem",
+      paddingBottom: ".53rem",
       borderWidth: 2,
       "&:hover": {
         borderWidth: 2,
@@ -72,7 +72,7 @@ const SubscriptionForm = () => {
             id="mc-embedded-subscribe"
             fullWidth
           >
-            YES PLEASE!
+            submit
           </Button>
         </Grid>
       </Grid>
