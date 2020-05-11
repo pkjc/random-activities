@@ -109,15 +109,16 @@ const useStyles = makeStyles((theme) => ({
   },
   subscriptionTitle: {
     fontSize: "1.4rem",
-    textAlign: "center",
+    textAlign: "left",
     color: "#777",
     lineHeight: "1",
     marginTop: 10,
+    marginLeft: 4,
   },
   activitySubscriptionForm: {
     border: "1px solid #ccc",
     ["@media (min-width:600px)"]: {
-      width: "600px",
+      width: "700px",
     },
   },
 }));

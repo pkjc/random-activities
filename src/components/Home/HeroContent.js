@@ -3,20 +3,11 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import ShuffleIcon from "@material-ui/icons/Shuffle";
+import { BsShuffle } from "react-icons/bs";
 import SendIcon from "@material-ui/icons/Send";
 import SubscriptionForm from "../SubscriptionForm/SubscriptionForm";
 
 export default function HeroContent(props) {
-  // const [anchorEl, setAnchorEl] = React.useState(null);
-  // const handleClick = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
-
   const useStyles = makeStyles((theme) => ({
     heroContent: {
       backgroundColor: theme.palette.secondary.main,
@@ -155,7 +146,7 @@ export default function HeroContent(props) {
                     variant="contained"
                     color="primary"
                     size="medium"
-                    startIcon={<ShuffleIcon />}
+                    endIcon={<BsShuffle />}
                     onClick={() => {
                       props.startRouletteHandler();
                     }}

@@ -6,15 +6,14 @@ import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-// import ThumbUpOutlined from "@material-ui/icons/ThumbUpOutlined";
-import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import { FiBookmark } from "react-icons/fi";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "../../assets/styles";
 import Link from "@material-ui/core/Link";
-import CallMadeIcon from "@material-ui/icons/CallMade";
 import loading from "../../assets/images/loading.gif";
 import SubscriptionFormActivity from "../SubscriptionForm/SubscriptionFormActivity";
+import { BsShuffle } from "react-icons/bs";
+import { FiExternalLink } from "react-icons/fi";
 
 export default function Activity(props) {
   const classes = useStyles();
@@ -91,7 +90,7 @@ export default function Activity(props) {
               aria-label="outlined primary button group"
             >
               <Button
-                startIcon={<BookmarkBorderIcon />}
+                startIcon={<FiBookmark />}
                 className={classes.yayBtn}
                 onClick={() => {
                   props.dopeHandler(props.activity);
@@ -101,7 +100,7 @@ export default function Activity(props) {
               </Button>
               <Button
                 color="primary"
-                startIcon={<CallMadeIcon />}
+                startIcon={<FiExternalLink />}
                 className={classes.visitBtn}
                 href={props.activity.url}
                 target="_blank"
@@ -109,7 +108,7 @@ export default function Activity(props) {
                 {props.activity.category ? props.activity.category : ""}
               </Button>
               <Button
-                endIcon={<ArrowForwardIcon />}
+                endIcon={<BsShuffle />}
                 disableRipple
                 className={classes.nayBtn}
                 onClick={() => {
@@ -134,12 +133,12 @@ export default function Activity(props) {
       </Grid>
       <Grid
         item
-        xs={10}
+        xs={11}
         className={classes.activitySubscriptionForm}
-        style={{ padding: 15, marginTop: 24 }}
+        style={{ padding: 15, marginTop: 35 }}
       >
         <Typography variant="h4" className={classes.subscriptionTitle}>
-          Get fun things to do via email
+          Get more fun things to do via email
         </Typography>
         <SubscriptionFormActivity />
       </Grid>
