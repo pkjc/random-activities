@@ -16,14 +16,26 @@ import SavedActivities from "../../components/SavedActivities/SavedActivities";
 import Home from "../../components/Home/Home";
 import Grid from "@material-ui/core/Grid";
 import Tabletop from "tabletop";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Box from "@material-ui/core/Box";
 
 const API_URL =
   "https://docs.google.com/spreadsheets/d/1S2MGuA1tKHHr4MWivcLw47q0gvF4iPv_hB1n_5xcPBA/";
+
+function appendRef(url) {
+  if (url.includes("?")) {
+    url = url + "&ref=boredathome.now.sh";
+  } else {
+    url = url + "?ref=boredathome.now.sh";
+  }
+  return url;
+}
 
 export default function App() {
   const classes = useStyles();
 
   const [isRouletteStarted, setIsRouletteStarted] = useState(false);
+  const [isDataLoading, setIsDataLoading] = useState(true);
   const [savedActivitiesData, setSavedActivitiesData] = React.useState(
     JSON.parse(localStorage.getItem("savedActivities")) || []
   );
@@ -32,18 +44,6 @@ export default function App() {
   );
   const [activitiesData, setActivitiesData] = React.useState([]);
 
-  function appendRef(url) {
-    if (url.includes("?")) {
-      url = url + "&ref=boredathome.now.sh";
-    }
-    // else if (url[url.length - 1] == "/") {
-    //   url = url + "?ref=boredathome.now.sh";
-    // }
-    else {
-      url = url + "?ref=boredathome.now.sh";
-    }
-    return url;
-  }
   function fetchDataFromServer() {
     Tabletop.init({
       key: API_URL,
@@ -53,6 +53,7 @@ export default function App() {
           obj["url"] = appendRef(obj["url"]);
         });
         setActivitiesData(dataFromSheet);
+        setIsDataLoading(false);
       },
       simpleSheet: true,
     });
@@ -124,15 +125,26 @@ export default function App() {
         </AppBar>
         <Switch>
           <Route exact path="/">
-            <Home
-              savedActivities={savedActivitiesData}
-              setSavedActivities={setSavedActivitiesData}
-              alreadySelectedIds={pickedActivitiesData}
-              setAlreadySelectedIds={setPickedActivitiesData}
-              isRouletteStarted={isRouletteStarted}
-              setIsRouletteStarted={setIsRouletteStarted}
-              activitiesData={activitiesData}
-            />
+            {isDataLoading ? (
+              <Box
+                display="flex"
+                style={{ minHeight: "87vh" }}
+                justifyContent="center"
+                alignItems="center"
+              >
+                <CircularProgress />
+              </Box>
+            ) : (
+              <Home
+                savedActivities={savedActivitiesData}
+                setSavedActivities={setSavedActivitiesData}
+                alreadySelectedIds={pickedActivitiesData}
+                setAlreadySelectedIds={setPickedActivitiesData}
+                isRouletteStarted={isRouletteStarted}
+                setIsRouletteStarted={setIsRouletteStarted}
+                activitiesData={activitiesData}
+              />
+            )}
           </Route>
           <Route path="/saved">
             <SavedActivities
@@ -141,42 +153,6 @@ export default function App() {
             />
           </Route>
         </Switch>
-        {/* <Fab
-          color="inherit"
-          href="https://forms.gle/SktfRvJJB8hJ6u4FA"
-          size="medium"
-          target="_blank"
-          style={{
-            textTransform: "none",
-            fontSize: "1rem",
-            borderRadius: 5,
-          }}
-          variant="extended"
-          className={classes.fabMargin}
-        >
-          <SendIcon className={classes.extendedIcon} />
-          Suggest Activity
-        </Fab> */}
-        {/* {isRouletteStarted && (
-          <RouterLink to="/saved">
-            <Fab
-              size="medium"
-              color="secondary"
-              aria-label="add"
-              className={classes.fabMargin}
-              style={{
-                color: "#7d4cdb",
-                fontWeight: "bold",
-                borderRadius: 5,
-                textTransform: "none",
-              }}
-              variant="extended"
-            >
-              <BookmarksIcon className={classes.extendedIcon} />
-              {savedActivitiesData && savedActivitiesData.length} Saved
-            </Fab>
-          </RouterLink>
-        )} */}
       </Router>
       <StickyFooter />
     </div>

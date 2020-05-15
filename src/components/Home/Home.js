@@ -37,7 +37,8 @@ export default function Home(props) {
     if (isRouletteStarted) {
       startRoulette();
     }
-  }, []);
+  }, [isRouletteStarted]);
+
   const startRoulette = () => {
     if (
       alreadySelectedIds &&

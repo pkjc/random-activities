@@ -125,6 +125,7 @@ export default function Activity(props) {
             style={{
               textAlign: "center",
               padding: "0 10% 1.5% 10%",
+              fontSize: ".85rem",
             }}
           >
             Click 'Save' or 'Next' to see next activity
