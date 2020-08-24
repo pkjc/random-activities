@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import SocialShareButtons from "./SocialShareButtons";
 // a basic form
 const SubscriptionForm = () => {
   const useStyles = makeStyles((theme) => ({
@@ -22,11 +23,11 @@ const SubscriptionForm = () => {
     },
     submit: {
       textAlign: "center",
-      fontSize: 20,
+      fontSize: 24,
       marginTop: theme.spacing(1),
-      fontWeight: "bold",
-      paddingTop: ".53rem",
-      paddingBottom: ".53rem",
+      textTransform: "capitalize",
+      paddingTop: ".25rem",
+      paddingBottom: ".25rem",
       borderWidth: 2,
       "&:hover": {
         borderWidth: 2,
@@ -37,6 +38,7 @@ const SubscriptionForm = () => {
       },
     },
   }));
+
   const classes = useStyles();
 
   return (
@@ -74,6 +76,9 @@ const SubscriptionForm = () => {
           >
             submit
           </Button>
+        </Grid>
+        <Grid item xs={12}>
+          <SocialShareButtons />
         </Grid>
       </Grid>
     </form>

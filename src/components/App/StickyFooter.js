@@ -29,11 +29,12 @@ const useStyles = makeStyles((theme) => ({
   footerContainer: {},
   footer: {
     padding: theme.spacing(2, 0),
-    backgroundColor: "#eee",
+
     position: "static",
     bottom: 0,
-    width: "100%",
+    width: "97%",
     zIndex: "9999",
+    margin: "auto",
   },
 }));
 
@@ -43,12 +44,12 @@ export default function StickyFooter() {
   return (
     <div className={classes.root}>
       <footer className={classes.footer}>
-        <Grid container direction="row" alignItems="center" justify="center">
-          <Grid item xs={6} md={6} style={{ paddingRight: "6px" }}>
+        <Grid container direction="row" justify="center" alignItems="center">
+          <Grid item xs={4}>
             <Box
               component="span"
               display="flex"
-              justifyContent={{ xs: "flex-end" }}
+              justifyContent={{ xs: "flex-start", md: "flex-end" }}
             >
               <Button
                 color="inherit"
@@ -65,11 +66,12 @@ export default function StickyFooter() {
               </Button>
             </Box>
           </Grid>
-          <Grid item xs={6} md={6} style={{ paddingLeft: "6px" }}>
+          <Grid item xs={4}></Grid>
+          <Grid item xs={4} md={4}>
             <Box
               component="span"
               display="flex"
-              justifyContent={{ xs: "flex-start" }}
+              justifyContent={{ xs: "flex-end", md: "flex-start" }}
             >
               <Copyright />
             </Box>

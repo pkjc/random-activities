@@ -4,10 +4,13 @@ const useStyles = makeStyles((theme) => ({
   root: { flexGrow: 1, minHeight: "100vh" },
   card: {
     padding: 0,
-    maxWidth: 700,
+
     marginTop: 35,
     ["@media (max-width:600px)"]: {
       marginTop: 20,
+    },
+    ["@media (min-width:600px)"]: {
+      width: 750,
     },
   },
   cardContent: {
@@ -16,8 +19,14 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 14,
     paddingTop: 22,
   },
-  cardContentPara: { fontSize: "1rem" },
+  cardContentPara: {
+    fontSize: ".95rem",
+    textTransform: "uppercase",
+    color: "#21bb67 !important",
+    letterSpacing: 1,
+  },
   media: {
+    objectFit: "contain",
     height: 380,
     // eslint-disable-line no-useless-computed-key
     ["@media (max-width:600px)"]: {
@@ -40,18 +49,23 @@ const useStyles = makeStyles((theme) => ({
   },
   cardContentTitle: {
     fontWeight: "bold",
-    marginTop: 5,
-    fontSize: "1.5rem",
-    textTransform: "capitalize",
+    marginTop: 7,
+    marginBottom: 2,
+    fontSize: "2rem",
+    // textTransform: "capitalize",
+    lineHeight: 1.2,
+    ["@media (max-width:600px)"]: {
+      fontSize: "1.75rem",
+    },
   },
   cardHeader: {
     paddingTop: "12px !important",
     paddingBottom: "12px !important",
   },
   buttonGroup: {
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 0,
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingBottom: 10,
   },
   yayBtn: {
     color: "#609860",
@@ -79,14 +93,14 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.main,
     textTransform: "Capitalize",
     fontWeight: "bold",
+    fontSize: "1.3rem",
   },
   grid: {
-    height: "87%",
-    display: "flex",
-    paddingBottom: "5%",
+    height: "auto",
+    paddingBottom: "2%",
     ["@media (max-width:600px)"]: {
-      height: "87%",
-      paddingBottom: "10%",
+      height: "auto",
+      paddingBottom: "2%",
     },
   },
   appBar: {
@@ -109,17 +123,22 @@ const useStyles = makeStyles((theme) => ({
     verticalAlign: "middle",
   },
   subscriptionTitle: {
-    fontSize: "1.4rem",
+    fontSize: "1.8rem",
     textAlign: "left",
     color: "#777",
     lineHeight: "1",
     marginTop: 10,
     marginLeft: 4,
+    fontWeight: 400,
   },
   activitySubscriptionForm: {
-    border: "1px solid #ccc",
+    border: "1px solid #ddd",
+    borderRadius: 5,
+    background: "#fbfbfb",
+    width: "100%",
+    // eslint-disable-line no-useless-computed-key
     ["@media (min-width:600px)"]: {
-      width: "700px",
+      maxWidth: "750px !important",
     },
   },
 }));

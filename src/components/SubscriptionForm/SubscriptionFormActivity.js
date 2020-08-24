@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import SocialShareButtons from "./SocialShareButtons";
 // a basic form
 const SubscriptionFormActivity = () => {
   const useStyles = makeStyles((theme) => ({
@@ -24,7 +25,7 @@ const SubscriptionFormActivity = () => {
       textAlign: "center",
       fontSize: 16,
       marginTop: theme.spacing(1),
-      fontWeight: "bold",
+      fontWeight: "normal",
       paddingTop: ".25rem",
       paddingBottom: ".25rem",
       borderWidth: 1,
@@ -48,7 +49,7 @@ const SubscriptionFormActivity = () => {
       name="mc-embedded-subscribe-form"
       target="_blank"
     >
-      <Grid container justify="space-between" alignItems="center" spacing={2}>
+      <Grid container justify="space-between" alignItems="center" spacing={1}>
         <Grid item xs={12} md={9}>
           <TextField
             variant="outlined"
@@ -76,6 +77,9 @@ const SubscriptionFormActivity = () => {
           >
             SUBMIT
           </Button>
+        </Grid>
+        <Grid item>
+          <SocialShareButtons />
         </Grid>
       </Grid>
     </form>

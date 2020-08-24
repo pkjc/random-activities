@@ -48,11 +48,11 @@ export default function HeroContent(props) {
       textAlign: "center",
     },
     subTitle: {
-      fontSize: "1.8rem",
+      fontSize: "1.9rem",
       fontWeight: "bold",
       marginBottom: 0,
-      marginTop: 25,
-      color: "#444",
+      marginTop: "15%",
+      color: "#666",
       ["@media (max-width:600px)"]: {
         // eslint-disable-line no-useless-computed-key
         fontSize: "1.6rem",
@@ -103,7 +103,7 @@ export default function HeroContent(props) {
                 align="center"
                 color="primary"
               >
-                Bored at home?
+                Are you bored?
               </Typography>
               <Typography
                 variant="h3"
@@ -111,7 +111,7 @@ export default function HeroContent(props) {
                 color="textSecondary"
                 className={classes.heroContentSubtitle}
               >
-                Lets find something fun to do!
+                Let's find something fun to do!
               </Typography>
             </React.Fragment>
           )}

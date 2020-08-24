@@ -4,13 +4,13 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
+import MuiAlert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -82,7 +82,7 @@ function SavedActivity(props) {
           size="medium"
           color="primary"
           onClick={() => {
-            props.removeSavedActivity(savedActivity.id);
+            props.removeSavedActivity(savedActivity.url);
           }}
         >
           Remove
@@ -104,21 +104,21 @@ export default function SavedActivities(props) {
   const removeSavedActivity = (savedActivityId) => {
     savedActivities.filter(function (savedActivity) {
       savedActivity = JSON.parse(savedActivity);
-      return savedActivity.id !== savedActivityId;
+      return savedActivity.url !== savedActivityId;
     });
 
     // remove from state variable
     setSavedActivities(
       savedActivities.filter(function (savedActivity) {
         savedActivity = JSON.parse(savedActivity);
-        return savedActivity.id !== savedActivityId;
+        return savedActivity.url !== savedActivityId;
       })
     );
   };
   const renderSavedActivity = (savedActivity) => {
     savedActivity = JSON.parse(savedActivity);
     return (
-      <Grid item key={savedActivity.id} xs={12} md={6} lg={4}>
+      <Grid item key={savedActivity.url} xs={12} md={6} lg={4}>
         <SavedActivity
           savedActivity={savedActivity}
           removeSavedActivity={removeSavedActivity}
@@ -130,6 +130,12 @@ export default function SavedActivities(props) {
   return (
     <React.Fragment>
       {/* <CssBaseline /> */}
+      <Container maxWidth="md">
+        <Alert severity="info" style={{ fontSize: 20, marginTop: 20 }}>
+          'Saved Acitivities' are stored in your browser and will get deleted
+          when you clear the cache.
+        </Alert>
+      </Container>
       <Grid
         container
         className={classes.cardGrid}
@@ -179,4 +185,8 @@ export default function SavedActivities(props) {
       </Grid>
     </React.Fragment>
   );
+}
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
 }

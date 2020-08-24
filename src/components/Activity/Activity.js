@@ -14,20 +14,89 @@ import loading from "../../assets/images/loading.gif";
 import SubscriptionFormActivity from "../SubscriptionForm/SubscriptionFormActivity";
 import { BsShuffle } from "react-icons/bs";
 import { FiExternalLink } from "react-icons/fi";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Box from "@material-ui/core/Box";
+import Chip from "@material-ui/core/Chip";
 
 export default function Activity(props) {
   const classes = useStyles();
   const [isImgLoaded, setIsImgLoaded] = useState(false);
+  const [isDataLoading, setIsDataLoading] = useState(true);
+  const [activity, setActivity] = React.useState({});
+  let retryCount = 3;
 
   const handleImageLoaded = () => {
     setIsImgLoaded(true);
   };
+
+  function fetchDataFromServer() {
+    fetch("/api/activities")
+      .then((response) => {
+        if (response.status === 500 && retryCount > 0) {
+          console.log("Retrying...");
+          fetchDataFromServer();
+          retryCount--;
+        } else {
+          return response.json();
+        }
+      })
+      .then((actvty) => {
+        console.log(actvty);
+        if (actvty) {
+          setImage(actvty);
+          setActivity(actvty);
+          setIsDataLoading(false);
+        }
+      });
+  }
+
+  const setImage = (act) => {
+    if (act["og:image"]) {
+      act["image"] = act["og:image"];
+    } else if (act["image"]) {
+      // do nothing
+    } else {
+      act["image"] =
+        "https://webshot.deam.io/" +
+        act.url +
+        "?width=1280&height=720&delay=100&";
+    }
+    if (act["image"].charAt(0) === "/") {
+      act["image"] = act.source + act["image"];
+    }
+    console.log("after updating image: ", act);
+  };
+
+  const nopeHandler = () => {
+    setIsDataLoading(true);
+    fetchDataFromServer();
+  };
+
+  useEffect(() => {
+    setIsDataLoading(true);
+    fetchDataFromServer();
+  }, []);
+
   useEffect(() => {
     setIsImgLoaded(false);
-  }, [props.activity.image]);
+  }, [activity.image]);
 
-  const imageStyle = !isImgLoaded ? { display: "none" } : {};
+  const imageStyle = !isImgLoaded
+    ? { display: "none" }
+    : { objectFit: "contain" };
 
+  if (isDataLoading) {
+    return (
+      <Box
+        display="flex"
+        style={{ minHeight: "87vh" }}
+        justifyContent="center"
+        alignItems="center"
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
   return (
     <Grid
       container
@@ -38,49 +107,57 @@ export default function Activity(props) {
     >
       <Grid item xs={11}>
         <Card className={classes.card}>
-          {props.activity.image && !isImgLoaded && (
+          {activity.image && !isImgLoaded && (
             <CardMedia
               component="img"
               className={classes.media}
               src={loading}
-              title={props.activity.title}
+              title={activity.title}
             />
           )}
-          {props.activity.image && (
-            <CardMedia
-              key={props.activity.image}
-              component={
-                props.activity.mediaType === "video" ? "iframe" : "img"
-              }
-              className={classes.media}
-              src={props.activity.image}
-              onLoad={handleImageLoaded}
-              title={props.activity.title}
-              style={imageStyle}
-            />
-          )}
+          <CardMedia
+            key={activity.image}
+            component={activity.mediaType === "video" ? "iframe" : "img"}
+            className={classes.media}
+            src={activity.image}
+            onLoad={handleImageLoaded}
+            title={activity.title}
+            style={imageStyle}
+          />
           <CardContent className={classes.cardContent}>
             {/* <Typography className={classes.cardHeaderTitle}>
-            {props.activity.category}
+            {activity.category}
           </Typography> */}
-            <Link href={props.activity.url}>
+
+            {/* <Typography
+              variant="overline"
+              className={classes.cardContentPara}
+              color="textSecondary"
+            >
+              Source: {activity["source"]}
+              {activity["og:title"] ? activity["og:title"] : activity["title"]} 
+            </Typography> */}
+            <Chip
+              variant="outlined"
+              size="small"
+              className={classes.cardContentPara}
+              label={"Source: " + activity["source"]}
+            />
+            <Link href={activity.url} target="_blank" rel="noreferrer">
               <Typography
                 className={classes.cardContentTitle}
                 gutterBottom
                 variant="h4"
                 component="h1"
               >
-                {props.activity.title}
+                {activity["og:description"]
+                  ? activity["og:description"]
+                  : activity["description"]}
+                {!activity["og:description"] && !activity["description"]
+                  ? activity["title"]
+                  : ""}
               </Typography>
             </Link>
-            <Typography
-              variant="h5"
-              className={classes.cardContentPara}
-              color="textSecondary"
-              component="p"
-            >
-              {props.activity.description}
-            </Typography>
           </CardContent>
           <CardActions>
             <ButtonGroup
@@ -93,7 +170,7 @@ export default function Activity(props) {
                 startIcon={<FiBookmark />}
                 className={classes.yayBtn}
                 onClick={() => {
-                  props.dopeHandler(props.activity);
+                  props.dopeHandler(activity);
                 }}
               >
                 Save
@@ -102,24 +179,23 @@ export default function Activity(props) {
                 color="primary"
                 startIcon={<FiExternalLink />}
                 className={classes.visitBtn}
-                href={props.activity.url}
+                href={activity.url}
                 target="_blank"
+                rel="noreferrer"
               >
-                {props.activity.category ? props.activity.category : ""}
+                {activity.category ? activity.category : "Visit"}
               </Button>
               <Button
                 endIcon={<BsShuffle />}
                 disableRipple
                 className={classes.nayBtn}
-                onClick={() => {
-                  props.nopeHandler();
-                }}
+                onClick={nopeHandler}
               >
                 Next
               </Button>
             </ButtonGroup>
           </CardActions>
-          <Typography
+          {/* <Typography
             variant="body1"
             color="textSecondary"
             style={{
@@ -129,14 +205,14 @@ export default function Activity(props) {
             }}
           >
             Click 'Save' or 'Next' to see next activity
-          </Typography>
+          </Typography> */}
         </Card>
       </Grid>
       <Grid
         item
         xs={11}
         className={classes.activitySubscriptionForm}
-        style={{ padding: 15, marginTop: 35 }}
+        style={{ padding: 15, marginTop: 30 }}
       >
         <Typography variant="h4" className={classes.subscriptionTitle}>
           Get more fun things to do via email

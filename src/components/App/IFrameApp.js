@@ -13,14 +13,14 @@ import {
   Link as RouterLink,
 } from "react-router-dom";
 import SavedActivities from "../../components/SavedActivities/SavedActivities";
-import Home from "../../components/Home/Home";
+import IFrameHome from "../../components/Home/IFrameHome";
 import Grid from "@material-ui/core/Grid";
 import Tabletop from "tabletop";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Box from "@material-ui/core/Box";
-import NewHome from "../Home/NewHome";
 
-// const API_URL = "https://docs.google.com/spreadsheets/d/1S2MGuA1tKHHr4MWivcLw47q0gvF4iPv_hB1n_5xcPBA/";
+const API_URL =
+  "https://docs.google.com/spreadsheets/d/1S2MGuA1tKHHr4MWivcLw47q0gvF4iPv_hB1n_5xcPBA/";
 
 function appendRef(url) {
   if (url.includes("?")) {
@@ -31,46 +31,37 @@ function appendRef(url) {
   return url;
 }
 
-export default function App() {
+export default function IFrameApp() {
   const classes = useStyles();
+
   const [isRouletteStarted, setIsRouletteStarted] = useState(false);
-  const [isDataLoading, setIsDataLoading] = useState(false);
+  const [isDataLoading, setIsDataLoading] = useState(true);
   const [savedActivitiesData, setSavedActivitiesData] = React.useState(
     JSON.parse(localStorage.getItem("savedActivities")) || []
   );
   const [pickedActivitiesData, setPickedActivitiesData] = React.useState(
     JSON.parse(localStorage.getItem("pickedActivities")) || []
   );
+  const [activitiesData, setActivitiesData] = React.useState([]);
 
-  // const [activitiesData, setActivitiesData] = React.useState([]);
+  function fetchDataFromServer() {
+    Tabletop.init({
+      key: API_URL,
+      callback: (dataFromSheet, tabletop) => {
+        dataFromSheet.map((obj, ind) => {
+          obj["id"] = ind;
+          obj["url"] = appendRef(obj["url"]);
+        });
+        setActivitiesData(dataFromSheet);
+        setIsDataLoading(false);
+      },
+      simpleSheet: true,
+    });
+  }
 
-  // function fetchDataFromServer() {
-  //   Tabletop.init({
-  //     key: API_URL,
-  //     callback: (dataFromSheet, tabletop) => {
-  //       dataFromSheet.map((obj, ind) => {
-  //         obj["id"] = ind;
-  //         obj["url"] = appendRef(obj["url"]);
-  //       });
-  //       setActivitiesData(dataFromSheet);
-  //       setIsDataLoading(false);
-  //     },
-  //     simpleSheet: true,
-  //   });
-  // }
-
-  // function fetchDataFromServer2() {
-  //   fetch("/api/activities")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setActivitiesData(data);
-  //       setIsDataLoading(false);
-  //     });
-  // }
-
-  // useEffect(() => {
-  //   fetchDataFromServer2();
-  // }, []);
+  useEffect(() => {
+    fetchDataFromServer();
+  }, []);
 
   return (
     <div className={classes.root}>
@@ -79,7 +70,7 @@ export default function App() {
           className={classes.appBar}
           color="primary"
           elevation={0}
-          position="static"
+          position="fixed"
         >
           <Toolbar>
             <Grid
@@ -95,18 +86,13 @@ export default function App() {
                   className={classes.title}
                   style={{ textDecoration: "none" }}
                 >
-                  <Typography
-                    color="inherit"
-                    component="h1"
-                    className={classes.title}
-                  >
-                    BoredAF!
+                  <Typography color="inherit" className={classes.title}>
+                    Bored@Home
                   </Typography>
                 </RouterLink>
               </Grid>
-
               <Grid item>
-                <Button
+                {/* <Button
                   color="inherit"
                   variant="outlined"
                   className={classes.button}
@@ -115,23 +101,9 @@ export default function App() {
                   target="_blank"
                   style={{
                     textTransform: "none",
-                    marginRight: 12,
-                    paddingLeft: 8,
-                    paddingRight: 8,
+                    marginRight: 1,
+                    fontSize: "1rem",
                   }}
-                >
-                  Suggest Activity
-                </Button>
-                {/* <Button
-                  color="inherit"
-                  href="https://forms.gle/SktfRvJJB8hJ6u4FA"
-                  size="small"
-                  target="_blank"
-                  style={{
-                    textTransform: "none",
-                    borderRadius: 5,
-                  }}
-                  variant="outlined"
                 >
                   Suggest Activity
                 </Button> */}
@@ -163,20 +135,14 @@ export default function App() {
                 <CircularProgress />
               </Box>
             ) : (
-              // <Home
-              //   savedActivities={savedActivitiesData}
-              //   setSavedActivities={setSavedActivitiesData}
-              //   alreadySelectedIds={pickedActivitiesData}
-              //   setAlreadySelectedIds={setPickedActivitiesData}
-              //   isRouletteStarted={isRouletteStarted}
-              //   setIsRouletteStarted={setIsRouletteStarted}
-              //   activitiesData={activitiesData}
-              // />
-              <NewHome
+              <IFrameHome
                 savedActivities={savedActivitiesData}
                 setSavedActivities={setSavedActivitiesData}
+                alreadySelectedIds={pickedActivitiesData}
+                setAlreadySelectedIds={setPickedActivitiesData}
                 isRouletteStarted={isRouletteStarted}
                 setIsRouletteStarted={setIsRouletteStarted}
+                activitiesData={activitiesData}
               />
             )}
           </Route>

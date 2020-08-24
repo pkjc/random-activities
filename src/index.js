@@ -4,10 +4,26 @@ import App from "./components/App/App";
 import "./index.css";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { AppContextProvider } from "./components/App/AppContext";
+import IFrameApp from "./components/App/IFrameApp";
 
 const appCtx = { rouletteStarted: false };
 
 const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      "Sen",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      '"Segoe UI"',
+      "Roboto",
+      '"Helvetica Neue"',
+      "Arial",
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(","),
+  },
   // palette: {
   //   primary: {
   //     light: "#b27aff",
