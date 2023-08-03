@@ -115,5 +115,5 @@ function openRandomURL() {
     "http://www.wtfshouldidowithmylife.com/"];
   const randomIndex = Math.floor(Math.random() * urls.length);
   const randomURL = urls[randomIndex];
-  window.open(randomURL, '_blank');
+  return randomURL;
 }
