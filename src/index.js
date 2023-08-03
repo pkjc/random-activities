@@ -11,17 +11,8 @@ const appCtx = { rouletteStarted: false };
 const theme = createMuiTheme({
   typography: {
     fontFamily: [
-      "Sen",
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
-      "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
       "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
+      "monospace"
     ].join(","),
   },
   // palette: {

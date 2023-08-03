@@ -10,20 +10,24 @@ import SubscriptionForm from "../SubscriptionForm/SubscriptionForm";
 export default function HeroContent(props) {
   const useStyles = makeStyles((theme) => ({
     heroContent: {
-      backgroundColor: theme.palette.secondary.main,
+      display: "grid",
+      height: "100vh",
+      justifyContent: "center",
+      alignContent: "center",
       // border: "1px solid #ddd"
-      paddingTop: "12vh",
-      paddingBottom: "12vh",
-      ["@media (max-width:600px)"]: {
-        // eslint-disable-line no-useless-computed-key
-        fontSize: "1.7rem",
-        paddingTop: "9vh",
-        paddingBottom: "9vh",
-      },
+      // paddingTop: "12vh",
+      // paddingBottom: "12vh",
+      // ["@media (max-width:600px)"]: {
+      //   // eslint-disable-line no-useless-computed-key
+      //   fontSize: "1.7rem",
+      //   paddingTop: "9vh",
+      //   paddingBottom: "9vh",
+      // },
     },
     heroContentSubtitle: {
-      fontSize: "2rem",
+      fontSize: "1.8rem",
       fontWeight: "normal",
+      lineHeight: "1.5",
       paddingTop: 10,
       ["@media (max-width:600px)"]: {
         // eslint-disable-line no-useless-computed-key
@@ -31,12 +35,15 @@ export default function HeroContent(props) {
       },
     },
     heroButtons: {
-      marginTop: theme.spacing(4),
+      marginTop: theme.spacing(1),
+      marginLeft: "auto",
+      marginRight: "auto"
     },
     heroButton: {
       textTransform: "none",
-      fontSize: 24,
+      fontSize: 28,
       fontWeight: "normal",
+      padding: "6px 20px 2px 20px",
       ["@media (max-width:600px)"]: {
         // eslint-disable-line no-useless-computed-key
         fontSize: 20,
@@ -45,7 +52,7 @@ export default function HeroContent(props) {
     pStyle: {
       fontSize: "1.8rem",
       marginBottom: 30,
-      textAlign: "center",
+      textAlign: "left",
     },
     subTitle: {
       fontSize: "1.9rem",
@@ -68,7 +75,7 @@ export default function HeroContent(props) {
 
   return (
     <React.Fragment>
-      <Grid item xs={12}>
+      <Grid item xs={10} sm={6}>
         {/* <CssBaseline /> */}
         <div className={classes.heroContent}>
           {props.error ? (
@@ -100,18 +107,21 @@ export default function HeroContent(props) {
               <Typography
                 component="h1"
                 variant="h2"
-                align="center"
                 color="primary"
+                align="center"
               >
                 Are you bored?
               </Typography>
               <Typography
                 variant="h3"
-                align="center"
                 color="textSecondary"
                 className={classes.heroContentSubtitle}
               >
-                Let's find something fun to do!
+                <ul>
+                  <li>Drag the Bored! button to your bookmarks bar</li>
+                  <li>Click it when you're bored</li>
+                  <li>Visit a random interesting website</li>
+                </ul>
               </Typography>
             </React.Fragment>
           )}
@@ -119,13 +129,7 @@ export default function HeroContent(props) {
           <div className={classes.heroButtons}>
             <Grid
               container
-              lg={4}
-              md={6}
-              xs={10}
               spacing={2}
-              justify="center"
-              align="center"
-              style={{ margin: "auto" }}
               item
             >
               <Grid item xs={12}>
@@ -144,15 +148,13 @@ export default function HeroContent(props) {
                 ) : (
                   <Button
                     variant="contained"
+                    fullWidth
                     color="primary"
-                    size="medium"
-                    endIcon={<BsShuffle />}
-                    onClick={() => {
-                      props.startRouletteHandler();
-                    }}
+                    size="large"
+                    href="javascript:(function()%7Bwindow.open('https%3A%2F%2Fboredathome.vercel.app%2Fbookmarklet.html'%2C%20'_blank')%3B%7D)()%3B"
                     className={classes.heroButton}
                   >
-                    Random fun activity
+                    Bored!
                   </Button>
                 )}
               </Grid>
@@ -186,12 +188,6 @@ export default function HeroContent(props) {
             </Grid>
           </div>
         </div>
-      </Grid>
-      <Grid item xs={10} lg={4} md={4}>
-        <Typography variant="h4" className={classes.subTitle} align="center">
-          Get fun things to do via email
-        </Typography>
-        <SubscriptionForm />
       </Grid>
     </React.Fragment>
   );

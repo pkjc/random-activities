@@ -1,7 +1,9 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  root: { flexGrow: 1, minHeight: "100vh" },
+  root: { flexGrow: 1, minHeight: "100vh",       
+  backgroundColor: theme.palette.secondary.main,
+},
   card: {
     padding: 0,
 
@@ -96,12 +98,14 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.3rem",
   },
   grid: {
-    height: "auto",
-    paddingBottom: "2%",
-    ["@media (max-width:600px)"]: {
-      height: "auto",
-      paddingBottom: "2%",
-    },
+    justifyContent: "center",
+    alignContent: "center"
+    // height: "auto",
+    // paddingBottom: "2%",
+    // ["@media (max-width:600px)"]: {
+    //   height: "auto",
+    //   paddingBottom: "2%",
+    // },
   },
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
