@@ -14,7 +14,6 @@ function openRandomURL() {
     "https://www.ceros.com/originals/tiktok-dances/",
     "https://www.kapwing.com/museum-of-websites",
     "https://amiunique.org/",
-    "https://www.usefluent.co/",
     "https://songperday.com/",
     "https://skillhq.io/",
     "https://beta.readng.co/",
@@ -112,7 +111,13 @@ function openRandomURL() {
     "http://walla.me/",
     "https://wfh.ninja/",
     "https://puns.samueltaylor.org/",
-    "http://www.wtfshouldidowithmylife.com/"];
+    "http://www.wtfshouldidowithmylife.com/",
+    "https://sliding.toys/mystic-square/8-puzzle/daily/",
+    "https://earth.google.com/web/",
+    "https://file.pizza/",
+    "https://www.labnol.org/maps/location/",
+  
+  ];
   const randomIndex = Math.floor(Math.random() * urls.length);
   const randomURL = urls[randomIndex];
   return randomURL;

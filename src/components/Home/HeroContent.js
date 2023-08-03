@@ -24,6 +24,17 @@ export default function HeroContent(props) {
       //   paddingBottom: "9vh",
       // },
     },
+    ht:{
+      fontSize: "12rem",
+      letterSpacing: "-0.3rem",
+      lineHeight: "96%",
+      ["@media (max-width:600px)"]: {
+        // eslint-disable-line no-useless-computed-key
+        fontSize: "6rem",
+        letterSpacing: "0",
+        lineHeight: "96%",
+      },
+    },
     heroContentSubtitle: {
       fontSize: "1.8rem",
       fontWeight: "normal",
@@ -35,9 +46,7 @@ export default function HeroContent(props) {
       },
     },
     heroButtons: {
-      marginTop: theme.spacing(1),
-      marginLeft: "auto",
-      marginRight: "auto"
+      marginTop: theme.spacing(4)
     },
     heroButton: {
       textTransform: "none",
@@ -75,7 +84,7 @@ export default function HeroContent(props) {
 
   return (
     <React.Fragment>
-      <Grid item xs={10} sm={6}>
+      <Grid item xs={10} sm={9}>
         {/* <CssBaseline /> */}
         <div className={classes.heroContent}>
           {props.error ? (
@@ -108,7 +117,7 @@ export default function HeroContent(props) {
                 component="h1"
                 variant="h2"
                 color="primary"
-                align="center"
+                className={classes.ht}
               >
                 Are you bored?
               </Typography>
@@ -117,11 +126,9 @@ export default function HeroContent(props) {
                 color="textSecondary"
                 className={classes.heroContentSubtitle}
               >
-                <ul>
-                  <li>Drag the Bored! button to your bookmarks bar</li>
-                  <li>Click it when you're bored</li>
-                  <li>Visit a random interesting website</li>
-                </ul>
+                  - Drag the Bored! button to your bookmarks bar<br/>
+                  - Click it when you're bored<br/>
+                  - Visit a random interesting website
               </Typography>
             </React.Fragment>
           )}
@@ -131,8 +138,9 @@ export default function HeroContent(props) {
               container
               spacing={2}
               item
+
             >
-              <Grid item xs={12}>
+              <Grid item xs={4}>
                 {props.error ? (
                   <Button
                     variant="contained"
