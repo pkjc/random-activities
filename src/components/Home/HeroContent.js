@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { BsShuffle } from "react-icons/bs";
 import SendIcon from "@material-ui/icons/Send";
 import SubscriptionForm from "../SubscriptionForm/SubscriptionForm";
+import { Block } from "@material-ui/icons";
 
 export default function HeroContent(props) {
   const useStyles = makeStyles((theme) => ({
@@ -25,17 +26,18 @@ export default function HeroContent(props) {
       // },
     },
     ht:{
-      fontSize: "12rem",
+      fontSize: "10rem",
       letterSpacing: "-0.3rem",
-      lineHeight: "96%",
+      lineHeight: "110%",
       ["@media (max-width:600px)"]: {
         // eslint-disable-line no-useless-computed-key
-        fontSize: "6rem",
+        fontSize: "4.5rem",
         letterSpacing: "0",
-        lineHeight: "96%",
+        lineHeight: "105%",
       },
     },
-    heroContentSubtitle: {
+    heroContentSubtitleMob: {
+      display: "none",
       fontSize: "1.8rem",
       fontWeight: "normal",
       lineHeight: "1.5",
@@ -43,6 +45,19 @@ export default function HeroContent(props) {
       ["@media (max-width:600px)"]: {
         // eslint-disable-line no-useless-computed-key
         fontSize: "1.75rem",
+        display: "block"
+      },
+    },
+    heroContentSubtitle: {
+      display: "block",
+      fontSize: "1.8rem",
+      fontWeight: "normal",
+      lineHeight: "1.5",
+      paddingTop: 10,
+      ["@media (max-width:600px)"]: {
+        // eslint-disable-line no-useless-computed-key
+        fontSize: "1.75rem",
+        display: "none"
       },
     },
     heroButtons: {
@@ -84,7 +99,7 @@ export default function HeroContent(props) {
 
   return (
     <React.Fragment>
-      <Grid item xs={10} sm={9}>
+      <Grid item xs={10} sm={8}>
         {/* <CssBaseline /> */}
         <div className={classes.heroContent}>
           {props.error ? (
@@ -121,15 +136,23 @@ export default function HeroContent(props) {
               >
                 Are you bored?
               </Typography>
+      
               <Typography
                 variant="h3"
                 color="textSecondary"
                 className={classes.heroContentSubtitle}
               >
                   - Drag the Bored! button to your bookmarks bar<br/>
-                  - Click it when you're bored<br/>
-                  - Visit a random interesting website
+                  - Click it to visit random interesting website
               </Typography>
+              <Typography
+                variant="h3"
+                color="textSecondary"
+                className={classes.heroContentSubtitleMob}
+              >
+                 Click the Bored! button to visit a random interesting website.
+              </Typography>
+            
             </React.Fragment>
           )}
 
@@ -159,7 +182,7 @@ export default function HeroContent(props) {
                     fullWidth
                     color="primary"
                     size="large"
-                    href="javascript:(function()%7Bwindow.open('https%3A%2F%2Fboredathome.vercel.app%2Fbookmarklet.html'%2C%20'_blank')%3B%7D)()%3B"
+                    href="javascript:(function()%7Bwindow.open('https%3A%2F%2Fboredathome.vercel.app%2Fgo.html'%2C%20'_blank')%3B%7D)()%3B"
                     className={classes.heroButton}
                   >
                     Bored!

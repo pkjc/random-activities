@@ -80,7 +80,6 @@ function openRandomURL() {
     "https://smashthewalls.com/",
     "http://www.staggeringbeauty.com/",
     "https://cat-bounce.com/",
-    "https://mubi.com/showing",
     "https://honestslogans.com/",
     "https://www.rainymood.com/",
     "https://iwastesomuchtime.com/",
@@ -116,6 +115,12 @@ function openRandomURL() {
     "https://earth.google.com/web/",
     "https://file.pizza/",
     "https://www.labnol.org/maps/location/",
+    "https://neal.fun/space-elevator/",
+    "https://hipstersound.com/rainy-screensaver.html",
+    "https://blocks.ovh/",
+    "https://students.tools/sounds-of-space/",
+    "https://my90stv.com/",
+    "https://public.photos/"
   
   ];
   const randomIndex = Math.floor(Math.random() * urls.length);

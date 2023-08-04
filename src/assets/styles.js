@@ -6,7 +6,6 @@ const useStyles = makeStyles((theme) => ({
 },
   card: {
     padding: 0,
-
     marginTop: 35,
     ["@media (max-width:600px)"]: {
       marginTop: 20,
